@@ -1,37 +1,65 @@
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Medium.woff2') format('woff2'),
-    url('/fonts/Gilroy-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Regular.woff2') format('woff2'),
-    url('/fonts/Gilroy-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-RegularItalic.woff2') format('woff2'),
-    url('/fonts/Gilroy-RegularItalic.woff') format('woff');
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/fonts/AvenirNextRoundedStd-Italic.woff2') format('woff2'),
+    url('/fonts/AvenirNextRoundedStd-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
-  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2'),
-    url('/fonts/Gilroy-SemiBold.woff') format('woff');
-  font-weight: 600;
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/fonts/AvenirNextRoundedStd-BoldIt.woff2') format('woff2'),
+    url('/fonts/AvenirNextRoundedStd-BoldIt.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/fonts/AvenirNextRoundedStd-Reg.woff2') format('woff2'),
+    url('/fonts/AvenirNextRoundedStd-Reg.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
-  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/fonts/AvenirNextRoundedStd-Med.woff2') format('woff2'),
+    url('/fonts/AvenirNextRoundedStd-Med.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/fonts/AvenirNextRoundedStd-DemiIt.woff2') format('woff2'),
+    url('/fonts/AvenirNextRoundedStd-DemiIt.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/fonts/AvenirNextRoundedStd-MedIt.woff2') format('woff2'),
+    url('/fonts/AvenirNextRoundedStd-MedIt.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/fonts/AvenirNextRoundedStd-Demi.woff2') format('woff2'),
+    url('/fonts/AvenirNextRoundedStd-Demi.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Next Rounded Std';
+  src: url('/fonts/AvenirNextRoundedStd-Bold.woff2') format('woff2'),
+    url('/fonts/AvenirNextRoundedStd-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @tailwind base;

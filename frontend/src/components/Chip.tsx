@@ -3,13 +3,14 @@ import Cross from '@/svg/cross.svg';
 
 interface Props {
   name: string;
+  onClose?: () => void;
 }
 
 const Chip = (props: Props) => {
   return (
-    <div className="flex items-center rounded-full p-1 bg-blue-400 font-medium text-white text-sm border-blue-500">
-      <div className="px-1">{props.name}</div>
-      <div className="px-1">
+    <div className="flex items-center rounded-full p-1 bg-teal-400 font-medium text-white text-sm border-blue-500 ">
+      <div className="px-1 text-xs">{props.name}</div>
+      <div className="w-4 h-4" onClick={props.onClose}>
         <img
           className="w-4 h-4 text-white"
           src={Cross}
