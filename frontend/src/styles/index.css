@@ -65,3 +65,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::selection,
+::-moz-selection {
+  color: red;
+  background: yellow;
+}
