@@ -6,7 +6,7 @@ interface Props {
   onClose?: () => void;
 }
 
-const Chip = (props: Props) => {
+const Chip: React.FC<Props> = (props: Props) => {
   return (
     <div className="flex items-center rounded-full p-1 bg-teal-400 font-medium text-white text-sm border-blue-500 ">
       <div className="px-1 text-xs">{props.name}</div>

@@ -1,5 +1,5 @@
 export interface IStudent {
-  name: string;
-  facultyId: string;
-  majorId: string;
+  n: string;
+  f: string;
+  j: string;
 }

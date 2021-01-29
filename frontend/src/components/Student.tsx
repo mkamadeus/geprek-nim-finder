@@ -13,7 +13,6 @@ const Student = (props: Props) => {
       0,
       3,
     ) as keyof typeof majorMap;
-    console.log(majorCode);
     return majorMap[majorCode];
   };
 
