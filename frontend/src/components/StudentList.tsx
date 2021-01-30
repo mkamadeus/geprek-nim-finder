@@ -14,7 +14,24 @@ const StudentList = () => {
     setLoading(true);
     const data = new Promise<IStudent[]>((resolve, _) => {
       const tmp = studentData
-        .filter((s: IStudent) => s.n.toLowerCase().includes(keywords))
+        .filter((s: IStudent) => {
+          const chipArray = chips.split(',');
+          for (let i = 0; i < chipArray.length; i++) {
+            if (
+              s.n.toLowerCase().includes(chipArray[i]) ||
+              s.f.includes(chipArray[i]) ||
+              s.j.includes(chipArray[i])
+            ) {
+              return true;
+            }
+          }
+        })
+        .filter(
+          (s: IStudent) =>
+            s.n.toLowerCase().includes(keywords) ||
+            s.f.includes(keywords) ||
+            s.j.includes(keywords),
+        )
         .sort((x, y) => {
           if (x.n > y.n) return 1;
           if (x.n < y.n) return -1;
@@ -24,25 +41,36 @@ const StudentList = () => {
     });
     return data.then((students) => {
       setLoading(false);
-      setCount(10);
       setResult(students);
     });
   }, [keywords, chips, setLoading, setResult, setCount]);
 
+  // Filter data if keywords length gte 3
   useEffect(() => {
-    if (keywords.length >= 3) {
+    if (keywords.length >= 3 || chips.length !== 0) {
       filterData();
+      setCount(result.length < 10 ? result.length : 10);
     }
-  }, [filterData]);
+  }, [keywords, chips, filterData]);
 
-  if (isLoading || keywords.length < 3) {
-    return <div>loading</div>;
+  if (isLoading) {
+    return (
+      <div className="text-xs text-center italic text-gray-500">Loading...</div>
+    );
+  } else if (keywords.length < 3 && chips.length === 0) {
+    return (
+      <div className="text-xs text-center italic text-gray-500">
+        Hasil pencarian akan keluar di sini.
+      </div>
+    );
   } else {
     return (
       <>
+        <div className="text-xs text-center italic text-gray-500">
+          Menunjukan {count} dari {result.length} hasil.
+        </div>
         <div className="pb-4">
-          {result.slice(0, Math.min(result.length, count)).map((s) => {
-            // console.log(s);
+          {result.slice(0, count).map((s) => {
             return (
               <>
                 <Student name={s.n} facultyId={s.f} majorId={s.j} />
@@ -56,7 +84,10 @@ const StudentList = () => {
             <button
               className="border border-teal-500 rounded text-teal-500 px-2 p-1"
               onClick={() => {
-                setCount(count + 10);
+                setCount(
+                  count +
+                    (result.length - count < 10 ? result.length - count : 10),
+                );
               }}
             >
               Load more...

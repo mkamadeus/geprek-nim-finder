@@ -49,11 +49,11 @@ const SearchBar: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="flex rounded-full shadow p-2 mb-2 w-full border-2 border-teal-200">
+      <div className="flex rounded-full shadow p-2 mb-2 w-full border-2 border-teal-200 bg-none dark:bg-teal-800">
         <input
           value={keywords}
           onChange={onSearch}
-          className="outline-none w-full"
+          className="outline-none w-full bg-none dark:bg-teal-800 dark:text-white"
           role="textbox"
         />
       </div>

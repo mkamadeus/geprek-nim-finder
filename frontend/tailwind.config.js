@@ -1,6 +1,6 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
       sans: ['Avenir Next Rounded Std'],
@@ -18,6 +18,18 @@ module.exports = {
           700: '#15655c',
           800: '#10514e',
           900: '#0d4a4a',
+        },
+        violet: {
+          50: '#f7f6fd',
+          100: '#efedfc',
+          200: '#e1dbfa',
+          300: '#c5b6f6',
+          400: '#a98bf4',
+          500: '#8950f1',
+          600: '#600dde',
+          700: '#3c0580',
+          800: '#26024b',
+          900: '#1c0033',
         },
       },
     },

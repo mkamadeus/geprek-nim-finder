@@ -10,7 +10,7 @@
   font-family: 'Avenir Next Rounded Std';
   src: url('/fonts/AvenirNextRoundedStd-BoldIt.woff2') format('woff2'),
     url('/fonts/AvenirNextRoundedStd-BoldIt.woff') format('woff');
-  font-weight: bold;
+  font-weight: 700;
   font-style: italic;
 }
 
@@ -34,7 +34,7 @@
   font-family: 'Avenir Next Rounded Std';
   src: url('/fonts/AvenirNextRoundedStd-DemiIt.woff2') format('woff2'),
     url('/fonts/AvenirNextRoundedStd-DemiIt.woff') format('woff');
-  font-weight: bold;
+  font-weight: 600;
   font-style: italic;
 }
 
@@ -50,7 +50,7 @@
   font-family: 'Avenir Next Rounded Std';
   src: url('/fonts/AvenirNextRoundedStd-Demi.woff2') format('woff2'),
     url('/fonts/AvenirNextRoundedStd-Demi.woff') format('woff');
-  font-weight: bold;
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -58,7 +58,7 @@
   font-family: 'Avenir Next Rounded Std';
   src: url('/fonts/AvenirNextRoundedStd-Bold.woff2') format('woff2'),
     url('/fonts/AvenirNextRoundedStd-Bold.woff') format('woff');
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -66,8 +66,8 @@
 @tailwind components;
 @tailwind utilities;
 
-::selection,
+/* ::selection,
 ::-moz-selection {
-  color: red;
-  background: yellow;
-}
+  color: red !important;
+  background: yellow !important;
+} */

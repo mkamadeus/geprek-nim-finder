@@ -31,16 +31,24 @@ const Student = (props: Props) => {
   return (
     <div className="flex justify-between items-center py-2">
       <div>
-        <div className="text-sm font-medium">{props.name}</div>
-        <div className="text-xs italic text-gray-500 select-none">
+        <div className="text-sm font-medium  dark:text-teal-200">
+          {props.name}
+        </div>
+        <div className="text-xs italic text-gray-500 dark:text-white select-none">
           {major || faculty}
         </div>
       </div>
       <div>
         {major ? (
-          <div className={`text-xs text-gray-500`}>{props.majorId}</div>
+          <div className={`text-xs text-gray-500  dark:text-white`}>
+            {props.majorId}
+          </div>
         ) : null}
-        <div className={`text-xs text-gray-500 ${major ? 'select-none' : ''}`}>
+        <div
+          className={`text-xs text-gray-500  dark:text-white ${
+            major ? 'select-none' : ''
+          }`}
+        >
           {props.facultyId}
         </div>
       </div>
