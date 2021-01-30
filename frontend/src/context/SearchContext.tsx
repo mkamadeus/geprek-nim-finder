@@ -24,9 +24,6 @@ const SearchContextProvider: React.FC<{}> = (props) => {
   );
   const [chips, setChips] = useQueryString('chips', params.get('filter') || '');
 
-  console.log(keywords);
-  console.log(chips);
-
   return (
     <SearchContext.Provider value={{ keywords, chips, setKeywords, setChips }}>
       {props.children}

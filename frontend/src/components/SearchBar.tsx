@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext } from 'react';
 import { isTag } from '@/utils/isTag';
 import Chip from './Chip';
 import { SearchContext } from '@/context/SearchContext';
@@ -10,18 +10,27 @@ const SearchBar: React.FC<Props> = (props: Props) => {
 
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = event.target.value;
+    let splittedInput = inputValue.split(' ');
+    // console.log(splittedInput);
+    // console.log(splittedInput);
 
-    if (inputValue[inputValue.length - 1] == ' ') {
-      let splittedInput = inputValue.split(' ');
-
-      // Check if tag is inputted
-      if (isTag(splittedInput[splittedInput.length - 2])) {
-        inputValue = splittedInput.slice(0, splittedInput.length - 2).join(' ');
-        const tagValue = splittedInput[splittedInput.length - 2].slice(1);
-        setChips(chips.length === 0 ? tagValue : chips + `,${tagValue}`);
+    // Check if tag is inputted
+    if (inputValue[inputValue.length - 1] === '?') {
+      for (const phrase of splittedInput) {
+        console.log(phrase);
+        if (isTag(phrase)) {
+          const tagValue = phrase.slice(1, phrase.length - 1);
+          setChips(chips.length === 0 ? tagValue : chips + `,${tagValue}`);
+        }
       }
     }
 
+    inputValue = splittedInput
+      .filter((phrase) => {
+        // console.log(phrase, isTag(phrase), phrase.length > 2);
+        return !isTag(phrase);
+      })
+      .join(' ');
     setKeywords(inputValue);
   };
 
@@ -49,15 +58,17 @@ const SearchBar: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="flex rounded-full shadow p-2 mb-2 w-full border-2 border-teal-200 bg-none dark:bg-teal-800">
+      <div className="flex rounded-full shadow p-2 mb-1 w-full border-2 border-teal-200 dark:border-gray-800 bg-white dark:bg-gray-700">
         <input
           value={keywords}
           onChange={onSearch}
-          className="outline-none w-full bg-none dark:bg-teal-800 dark:text-white"
+          className="outline-none w-full bg-transparent dark:text-white"
           role="textbox"
         />
       </div>
-      <div className="flex flex-wrap w-full -mx-1">{chipArray()}</div>
+      <div className="flex overflow-auto md:flex-wrap w-full -mx-1 p-1">
+        {chipArray()}
+      </div>
     </>
   );
 };

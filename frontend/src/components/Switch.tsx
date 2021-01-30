@@ -9,8 +9,8 @@ const Switch = (props: Props) => {
 
   return (
     <div
-      className={`w-12 h-18 p-1 flex items-center ${
-        active ? 'bg-teal-400' : 'bg-gray-300'
+      className={`w-10 h-18 p-1 flex items-center ${
+        active ? 'bg-teal-300' : 'bg-gray-300'
       } rounded-full`}
       onClick={() => {
         props.onToggle();
@@ -19,8 +19,8 @@ const Switch = (props: Props) => {
     >
       <div
         className={`transform ${
-          active ? 'translate-x-5' : ''
-        } bg-white shadow-md w-5 h-5 rounded-full duration-150 ease-in-out`}
+          active ? 'translate-x-4' : ''
+        } bg-white shadow-md w-4 h-4 rounded-full duration-150 ease-in-out`}
       ></div>
     </div>
   );

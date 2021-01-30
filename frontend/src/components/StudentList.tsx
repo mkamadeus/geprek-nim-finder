@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
+import { useAsync } from 'react-use';
 import Student from './Student';
 import studentData from '@/json/data.json';
 import { SearchContext } from '@/context/SearchContext';
@@ -10,8 +11,8 @@ const StudentList = () => {
   const [count, setCount] = useState<number>(0);
   const [isLoading, setLoading] = useState<boolean>(false);
 
-  const filterData = useCallback(async () => {
-    setLoading(true);
+  // Data filter logic
+  const filterData = async () => {
     const data = new Promise<IStudent[]>((resolve, _) => {
       const tmp = studentData
         .filter((s: IStudent) => {
@@ -39,19 +40,18 @@ const StudentList = () => {
         });
       resolve(tmp);
     });
-    return data.then((students) => {
-      setLoading(false);
-      setResult(students);
-    });
-  }, [keywords, chips, setLoading, setResult, setCount]);
+    return data;
+  };
 
-  // Filter data if keywords length gte 3
-  useEffect(() => {
+  useAsync(async () => {
     if (keywords.length >= 3 || chips.length !== 0) {
-      filterData();
+      const result = await filterData();
+      setLoading(false);
+      setResult(result);
       setCount(result.length < 10 ? result.length : 10);
+      return result;
     }
-  }, [keywords, chips, filterData]);
+  }, [keywords, chips]);
 
   if (isLoading) {
     return (
@@ -72,17 +72,17 @@ const StudentList = () => {
         <div className="pb-4">
           {result.slice(0, count).map((s) => {
             return (
-              <>
+              <div key={s.f}>
                 <Student name={s.n} facultyId={s.f} majorId={s.j} />
                 <hr />
-              </>
+              </div>
             );
           })}
         </div>
         <div className="flex justify-center w-full">
           {result.length != count ? (
             <button
-              className="border border-teal-500 rounded text-teal-500 px-2 p-1"
+              className="border border-teal-500 rounded text-teal-500 px-2 p-1 outline-none"
               onClick={() => {
                 setCount(
                   count +

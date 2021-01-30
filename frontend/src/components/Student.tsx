@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import majorMap from '@/json/list_jurusan.json';
 import facultyMap from '@/json/list_fakultas.json';
 
@@ -8,7 +8,15 @@ interface Props {
   majorId: string;
 }
 
+const copyToClipboard = (text: string) => {
+  navigator.clipboard.writeText(text);
+};
+
 const Student = (props: Props) => {
+  const nameRef = useRef<HTMLDivElement | null>(null);
+  const majorIdRef = useRef<HTMLDivElement | null>(null);
+  const facultyIdRef = useRef<HTMLDivElement | null>(null);
+
   const getMajor = () => {
     const majorCode: keyof typeof majorMap = props.majorId.slice(
       0,
@@ -31,23 +39,39 @@ const Student = (props: Props) => {
   return (
     <div className="flex justify-between items-center py-2">
       <div>
-        <div className="text-sm font-medium  dark:text-teal-200">
+        <div
+          className="text-sm font-medium  dark:text-gray-200 cursor-pointer hover:animate-pulse"
+          ref={nameRef}
+          onClick={() => {
+            copyToClipboard(nameRef.current?.innerHTML!);
+          }}
+        >
           {props.name}
         </div>
-        <div className="text-xs italic text-gray-500 dark:text-white select-none">
+        <div className="text-xs italic text-gray-500 dark:text-gray-300 select-none">
           {major || faculty}
         </div>
       </div>
       <div>
         {major ? (
-          <div className={`text-xs text-gray-500  dark:text-white`}>
+          <div
+            className={`text-xs text-gray-500  dark:text-gray-300 cursor-pointer hover:animate-pulse`}
+            ref={majorIdRef}
+            onClick={() => {
+              copyToClipboard(majorIdRef.current?.innerHTML!);
+            }}
+          >
             {props.majorId}
           </div>
         ) : null}
         <div
-          className={`text-xs text-gray-500  dark:text-white ${
+          className={`text-xs text-gray-500  dark:text-gray-300 ${
             major ? 'select-none' : ''
-          }`}
+          } cursor-pointer hover:animate-pulse`}
+          ref={facultyIdRef}
+          onClick={() => {
+            copyToClipboard(facultyIdRef.current?.innerHTML!);
+          }}
         >
           {props.facultyId}
         </div>

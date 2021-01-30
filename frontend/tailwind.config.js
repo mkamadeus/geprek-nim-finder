@@ -6,6 +6,15 @@ module.exports = {
       sans: ['Avenir Next Rounded Std'],
     },
     extend: {
+      keyframes: {
+        fadein: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+      },
+      animation: {
+        fadein: 'fadein 0.6s ease-in-out',
+      },
       colors: {
         teal: {
           50: '#f0faf5',
@@ -34,6 +43,10 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      animation: ['hover', 'focus'],
+    },
+  },
   plugins: [],
 };
