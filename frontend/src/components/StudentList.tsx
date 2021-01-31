@@ -19,7 +19,9 @@ const StudentList = () => {
     return (
       <>
         <div className="text-xs text-center italic text-gray-500">
-          Menunjukan {count} dari {result.length} hasil.
+          {count === 0
+            ? 'Tidak ditemukan apa-apa. Mungkin salah geprek.'
+            : `Menunjukan ${count} dari ${result.length} hasil.`}
         </div>
         <div className="pb-4">
           {result.slice(0, count).map((s) => {

@@ -14,19 +14,18 @@ const SearchBar: React.FC<Props> = (props: Props) => {
 
     // Check if tag is inputted
     if (inputValue[inputValue.length - 1] === '?') {
-      for (const phrase of splittedInput) {
-        if (isTag(phrase)) {
-          const tagValue = phrase.slice(1, phrase.length - 1);
-          setChips(chips.length === 0 ? tagValue : chips + `,${tagValue}`);
-        }
+      const phrase = splittedInput[splittedInput.length - 1];
+      if (isTag(phrase)) {
+        const tagValue = phrase.slice(1, phrase.length - 1);
+        setChips(chips.length === 0 ? tagValue : chips + `,${tagValue}`);
       }
+      inputValue = splittedInput
+        .filter((phrase) => {
+          return !isTag(phrase);
+        })
+        .join(' ');
     }
 
-    inputValue = splittedInput
-      .filter((phrase) => {
-        return !isTag(phrase);
-      })
-      .join(' ');
     setKeywords(inputValue);
   };
 

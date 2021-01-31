@@ -19,8 +19,6 @@ export const useSearch = () => {
   };
 
   const keywordsWithoutNumber = useMemo<string[]>(() => {
-    console.log(tokenizeTag(keywords));
-
     const splittedKeywords = tokenizeTag(keywords);
     const result = [];
     for (const keyword of splittedKeywords) {
@@ -97,7 +95,7 @@ export const useSearch = () => {
 
           // Second check -- number check
           for (const keyword of keywordsWithNumber) {
-            const status = s.f.includes(keyword) || s.j.includes(keyword);
+            const status = s.f.startsWith(keyword) || s.j.startsWith(keyword);
             if (status) {
               return status;
             }

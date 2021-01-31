@@ -19,9 +19,10 @@ export const tokenizeTag = (text: string): string[] => {
       currentString += text[i];
     }
   }
+
   result.push(currentString);
 
-  return result;
+  return result.filter((v) => v.length !== 0);
 };
 
 export const hasTag = (text: string): boolean => text.includes('?');
