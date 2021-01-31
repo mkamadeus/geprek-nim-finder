@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { isTag } from '@/utils/isTag';
+import { isTag, tokenizeTag } from '@/utils/tagUtils';
 import Chip from './Chip';
 import { SearchContext } from '@/context/SearchContext';
 
@@ -10,14 +10,11 @@ const SearchBar: React.FC<Props> = (props: Props) => {
 
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = event.target.value;
-    let splittedInput = inputValue.split(' ');
-    // console.log(splittedInput);
-    // console.log(splittedInput);
+    let splittedInput = tokenizeTag(inputValue);
 
     // Check if tag is inputted
     if (inputValue[inputValue.length - 1] === '?') {
       for (const phrase of splittedInput) {
-        console.log(phrase);
         if (isTag(phrase)) {
           const tagValue = phrase.slice(1, phrase.length - 1);
           setChips(chips.length === 0 ? tagValue : chips + `,${tagValue}`);
@@ -27,7 +24,6 @@ const SearchBar: React.FC<Props> = (props: Props) => {
 
     inputValue = splittedInput
       .filter((phrase) => {
-        // console.log(phrase, isTag(phrase), phrase.length > 2);
         return !isTag(phrase);
       })
       .join(' ');
