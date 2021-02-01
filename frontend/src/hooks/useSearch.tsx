@@ -5,7 +5,6 @@ import facultyCode from '@/json/kode_fakultas.json';
 import majorCode from '@/json/kode_jurusan.json';
 import studentData from '@/json/data_13_20.json';
 import { SearchContext } from '@/context/SearchContext';
-import { IStudent } from '@/models/Student';
 import { hasTag, tokenizeTag } from '@/utils/tagUtils';
 
 export const useSearch = () => {
@@ -42,6 +41,7 @@ export const useSearch = () => {
         continue;
       }
 
+      // console.log(keyword);
       if (isNumber(keyword)) {
         result.push(keyword);
       } else if (hasNumber(keyword)) {
@@ -78,7 +78,7 @@ export const useSearch = () => {
             if (
               s[0].toLowerCase().includes(chipArray[i]) ||
               s[1].includes(chipArray[i]) ||
-              s[2]!.includes(chipArray[i])
+              (s[2] && s[2].includes(chipArray[i]))
             ) {
               return true;
             }
@@ -95,12 +95,14 @@ export const useSearch = () => {
             }
           }
 
+          // console.log(keywordsWithNumber);
+
           // Second check -- number check
           for (const keyword of keywordsWithNumber) {
             if (keyword.length < 2) continue;
 
             const status =
-              s[1].startsWith(keyword) || s[2]!.startsWith(keyword);
+              s[1].startsWith(keyword) || (s[2] && s[2].startsWith(keyword));
             if (status) {
               return status;
             }
