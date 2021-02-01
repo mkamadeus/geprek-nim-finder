@@ -3,14 +3,14 @@ import { useAsync } from 'react-use';
 import { hasNumber, isNumber } from '../utils/numberUtils';
 import facultyCode from '@/json/kode_fakultas.json';
 import majorCode from '@/json/kode_jurusan.json';
-import studentData from '@/json/data.json';
+import studentData from '@/json/data_13_20.json';
 import { SearchContext } from '@/context/SearchContext';
 import { IStudent } from '@/models/Student';
 import { hasTag, tokenizeTag } from '@/utils/tagUtils';
 
 export const useSearch = () => {
   const { keywords, chips } = useContext(SearchContext);
-  const [result, setResult] = useState<IStudent[]>([]);
+  const [result, setResult] = useState<string[][]>([]);
   const [count, setCount] = useState<number>(0);
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -70,24 +70,26 @@ export const useSearch = () => {
 
   // Data filter logic
   const filterData = async () => {
-    const data = new Promise<IStudent[]>((resolve, _) => {
+    const data = new Promise<string[][]>((resolve, _) => {
       const tmp = studentData
-        .filter((s: IStudent) => {
+        .filter((s: string[]) => {
           const chipArray = chips.split(',');
           for (let i = 0; i < chipArray.length; i++) {
             if (
-              s.n.toLowerCase().includes(chipArray[i]) ||
-              s.f.includes(chipArray[i]) ||
-              s.j.includes(chipArray[i])
+              s[0].toLowerCase().includes(chipArray[i]) ||
+              s[1].includes(chipArray[i]) ||
+              s[2]!.includes(chipArray[i])
             ) {
               return true;
             }
           }
         })
-        .filter((s: IStudent) => {
+        .filter((s: string[]) => {
           // First check -- word check
           for (const keyword of keywordsWithoutNumber) {
-            const status = s.n.toLowerCase().includes(keyword.toLowerCase());
+            if (keyword.length < 2) continue;
+
+            const status = s[0].toLowerCase().includes(keyword.toLowerCase());
             if (status) {
               return status;
             }
@@ -95,7 +97,10 @@ export const useSearch = () => {
 
           // Second check -- number check
           for (const keyword of keywordsWithNumber) {
-            const status = s.f.startsWith(keyword) || s.j.startsWith(keyword);
+            if (keyword.length < 2) continue;
+
+            const status =
+              s[1].startsWith(keyword) || s[2]!.startsWith(keyword);
             if (status) {
               return status;
             }
@@ -104,8 +109,8 @@ export const useSearch = () => {
           return false;
         })
         .sort((x, y) => {
-          if (x.n > y.n) return 1;
-          if (x.n < y.n) return -1;
+          if (x[0] > y[0]) return 1;
+          if (x[0] < y[0]) return -1;
           return 0;
         });
       resolve(tmp);

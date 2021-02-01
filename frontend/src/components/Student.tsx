@@ -18,11 +18,14 @@ const Student = (props: Props) => {
   const facultyIdRef = useRef<HTMLDivElement | null>(null);
 
   const getMajor = () => {
-    const majorCode: keyof typeof majorMap = props.majorId.slice(
-      0,
-      3,
-    ) as keyof typeof majorMap;
-    return majorMap[majorCode];
+    if (props.majorId) {
+      const majorCode: keyof typeof majorMap = props.majorId.slice(
+        0,
+        3,
+      ) as keyof typeof majorMap;
+      return majorMap[majorCode];
+    }
+    return undefined;
   };
 
   const getFaculty = () => {

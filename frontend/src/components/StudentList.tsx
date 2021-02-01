@@ -26,8 +26,8 @@ const StudentList = () => {
         <div className="pb-4">
           {result.slice(0, count).map((s) => {
             return (
-              <div key={s.f}>
-                <Student name={s.n} facultyId={s.f} majorId={s.j} />
+              <div key={s[1]}>
+                <Student name={s[0]} facultyId={s[1]} majorId={s[2]} />
                 <hr />
               </div>
             );

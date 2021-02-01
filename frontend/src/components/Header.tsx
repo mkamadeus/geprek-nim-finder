@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { useLocalStorage } from 'react-use';
 import Switch from './Switch';
+import Help from '@/svg/help.svg';
+import { Link } from '@reach/router';
 
 interface Props {}
 
@@ -12,6 +15,20 @@ const geprekList = [
 ];
 
 const Header: React.FC = () => {
+  const [isDarkMode, setDarkMode] = useLocalStorage<boolean>('darkMode', false);
+
+  const geprek = useMemo<string>(() => {
+    return geprekList[Math.floor(Math.random() * geprekList.length)];
+  }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.getElementsByTagName('html')[0].classList.add('dark');
+    } else {
+      document.getElementsByTagName('html')[0].classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
   return (
     <>
       <div className="flex justify-between items-center">
@@ -20,22 +37,29 @@ const Header: React.FC = () => {
             Geprek NIM Finder
           </div>
           <div className="text-xs text-gray-400 dark:text-white italic">
-            Digeprek oleh{' '}
-            {geprekList[Math.floor(Math.random() * geprekList.length)]}.
+            Digeprek oleh {geprek}.
           </div>
         </div>
-        <div>
+        <div className="flex flex-col items-end">
+          <div className="w-3 h-3 mb-1">
+            <Link to="/help">
+              <img
+                src={Help}
+                className="w-full h-full"
+                style={{
+                  filter:
+                    'invert(100%) sepia(57%) saturate(667%) hue-rotate(280deg) brightness(120%) contrast(87%)',
+                }}
+              />
+            </Link>
+          </div>
           <Switch
-            onToggle={() => {
-              if (!localStorage.getItem('theme')) {
-                document.getElementsByTagName('html')[0].classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-              } else {
-                document
-                  .getElementsByTagName('html')[0]
-                  .classList.remove('dark');
-                localStorage.removeItem('theme');
-              }
+            initialState={isDarkMode}
+            onSwitchOn={() => {
+              setDarkMode(true);
+            }}
+            onSwitchOff={() => {
+              setDarkMode(false);
             }}
           />
         </div>

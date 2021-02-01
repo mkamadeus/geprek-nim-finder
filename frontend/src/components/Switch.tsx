@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
 interface Props {
-  onToggle: () => void;
+  initialState?: boolean;
+  onSwitchOn?: () => void;
+  onSwitchOff?: () => void;
 }
 
 const Switch = (props: Props) => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState<boolean>(props.initialState || false);
 
   return (
     <div
@@ -13,7 +15,11 @@ const Switch = (props: Props) => {
         active ? 'bg-teal-300' : 'bg-gray-300'
       } rounded-full`}
       onClick={() => {
-        props.onToggle();
+        if (!active) {
+          props.onSwitchOn!();
+        } else {
+          props.onSwitchOff!();
+        }
         setActive(!active);
       }}
     >
