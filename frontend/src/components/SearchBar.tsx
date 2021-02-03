@@ -53,7 +53,7 @@ const SearchBar: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="flex rounded-full shadow p-2 mb-1 w-full border-2 border-teal-200 dark:border-gray-800 bg-white dark:bg-gray-700">
+      <div className="flex rounded-full shadow p-2 mb-1 w-full border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-700 active:border-teal-200">
         <input
           value={keywords}
           onChange={onSearch}
@@ -61,7 +61,7 @@ const SearchBar: React.FC<Props> = (props: Props) => {
           role="textbox"
         />
       </div>
-      <div className="flex overflow-auto md:flex-wrap w-full -mx-1 p-1">
+      <div className="flex overflow-hidden md:flex-wrap w-full -mx-1 p-1">
         {chipArray()}
       </div>
     </>
