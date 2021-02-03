@@ -33,26 +33,26 @@ const Header: React.FC = () => {
     <>
       <div className="flex justify-between items-center">
         <div>
-          <div className="font-semibold text-xl text-teal-400 dark:text-teal-300">
-            Geprek NIM Finder
+          <div className="flex items-center font-semibold text-xl text-teal-400 dark:text-teal-300">
+            <div className="pr-4">Geprek NIM Finder</div>
+            <div className="w-3 h-3">
+              <Link to="/help">
+                <img
+                  src={Help}
+                  className="w-full h-full"
+                  style={{
+                    filter:
+                      'invert(100%) sepia(57%) saturate(667%) hue-rotate(280deg) brightness(120%) contrast(87%)',
+                  }}
+                />
+              </Link>
+            </div>
           </div>
           <div className="text-xs text-gray-400 dark:text-white italic">
             Digeprek oleh {geprek}.
           </div>
         </div>
         <div className="flex flex-col items-end">
-          <div className="w-3 h-3 mb-1">
-            <Link to="/help">
-              <img
-                src={Help}
-                className="w-full h-full"
-                style={{
-                  filter:
-                    'invert(100%) sepia(57%) saturate(667%) hue-rotate(280deg) brightness(120%) contrast(87%)',
-                }}
-              />
-            </Link>
-          </div>
           <Switch
             initialState={isDarkMode}
             onSwitchOn={() => {

@@ -1,10 +1,8 @@
 import { useContext, useMemo, useState } from 'react';
 import { useAsync } from 'react-use';
-import { hasNumber, isNumber } from '../utils/numberUtils';
 import studentData from '@/json/data_13_20.json';
 import { SearchContext } from '@/context/SearchContext';
 import {
-  hasTag,
   tokenizeTag,
   parseKeywordsWithNumber,
   parseKeywordsWithoutNumber,

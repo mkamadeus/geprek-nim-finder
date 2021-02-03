@@ -12,7 +12,7 @@ const Switch = (props: Props) => {
   return (
     <div
       className={`w-10 h-18 p-1 flex items-center ${
-        active ? 'bg-teal-300' : 'bg-gray-300'
+        active ? 'bg-teal-300' : 'bg-gray-200'
       } rounded-full`}
       onClick={() => {
         if (!active) {
