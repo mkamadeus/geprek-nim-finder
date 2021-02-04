@@ -38,7 +38,7 @@ const SearchBar: React.FC<Props> = (props: Props) => {
 
     return chipArray.map((chip, index) => {
       return (
-        <div className="px-1">
+        <div className="px-1" key={`chip-${index}`}>
           <Chip
             name={chip}
             onClose={() => {

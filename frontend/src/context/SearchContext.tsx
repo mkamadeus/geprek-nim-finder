@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { useQueryString } from '../hooks/useQueryString';
-import { IQuery } from '../models/Query';
 
 type SearchContextType = {
   keywords: string;
@@ -16,7 +15,7 @@ export const SearchContext = React.createContext<SearchContextType>({
   setChips: (_: string) => {},
 });
 
-const SearchContextProvider: React.FC<{}> = (props) => {
+const SearchContextProvider: React.FC = ({ children }) => {
   const params = new URLSearchParams(window.location.search);
   const [keywords, setKeywords] = useQueryString(
     'query',
@@ -26,7 +25,7 @@ const SearchContextProvider: React.FC<{}> = (props) => {
 
   return (
     <SearchContext.Provider value={{ keywords, chips, setKeywords, setChips }}>
-      {props.children}
+      {children}
     </SearchContext.Provider>
   );
 };

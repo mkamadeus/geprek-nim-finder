@@ -34,7 +34,7 @@ const StudentList = () => {
           })}
         </div>
         <div className="flex justify-center w-full">
-          {result.length != count ? (
+          {result.length !== count ? (
             <button
               className="border border-teal-500 rounded text-teal-500 px-2 p-1 outline-none"
               onClick={loadMore}
