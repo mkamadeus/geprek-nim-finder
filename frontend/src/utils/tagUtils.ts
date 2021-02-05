@@ -97,3 +97,19 @@ export const checkMatch = (
 
   return false;
 };
+
+type HighlightedPhrase = { s: string; h: boolean }[];
+
+export const highlight = (
+  studentData: string[],
+  keywordsWithoutNumber: string[],
+  keywordsWithNumber: string[],
+) => {
+  const result: HighlightedPhrase[] = [];
+  for (const keyword of keywordsWithoutNumber) {
+    const p: HighlightedPhrase = [];
+
+    const index = studentData[0].toLowerCase();
+    // if(studentData[0].toLowerCase().)
+  }
+};

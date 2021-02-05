@@ -18,7 +18,6 @@
     "semi": ["error", "always"],
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "indent": ["error", 2],
     "no-console": "warn"
   },
   "settings": {

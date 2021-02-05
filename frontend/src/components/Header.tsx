@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo } from 'react';
-import { useLocalStorage } from 'react-use';
+import React, { useContext, useMemo } from 'react';
 import Switch from './Switch';
 import Help from '@/svg/help.svg';
 import { Link } from '@reach/router';
+import { ThemeContext } from '@/context/ThemeContext';
 
 interface Props {}
 
@@ -15,19 +15,21 @@ const geprekList = [
 ];
 
 const Header: React.FC = () => {
-  const [isDarkMode, setDarkMode] = useLocalStorage<boolean>('darkMode', false);
-
   const geprek = useMemo<string>(() => {
     return geprekList[Math.floor(Math.random() * geprekList.length)];
   }, []);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.getElementsByTagName('html')[0].classList.add('dark');
-    } else {
-      document.getElementsByTagName('html')[0].classList.remove('dark');
-    }
-  }, [isDarkMode]);
+  // const [isDarkMode, setDarkMode] = useLocalStorage<boolean>('darkMode', false);
+
+  // useEffect(() => {
+  //   if (isDarkMode) {
+  //     document.getElementsByTagName('html')[0].classList.add('dark');
+  //   } else {
+  //     document.getElementsByTagName('html')[0].classList.remove('dark');
+  //   }
+  // }, [isDarkMode]);
+
+  const { isDarkMode, setDarkMode } = useContext(ThemeContext);
 
   return (
     <>
@@ -56,10 +58,10 @@ const Header: React.FC = () => {
           <Switch
             initialState={isDarkMode}
             onSwitchOn={() => {
-              setDarkMode(true);
+              setDarkMode!(true);
             }}
             onSwitchOff={() => {
-              setDarkMode(false);
+              setDarkMode!(false);
             }}
           />
         </div>

@@ -59,9 +59,9 @@ const Help = (props: RouteComponentProps) => {
             Berikut ini penjelasan terkait beberapa mode pencarian yang bisa
             dilakukan.
             <ul className="pl-6 my-1">
-              {searchModes.map(({ name, description }) => {
+              {searchModes.map(({ name, description }, index) => {
                 return (
-                  <li className="list-disc my-1">
+                  <li className="list-disc my-1" key={`mode-${index}`}>
                     <div className="font-semibold">{name}</div>
                     <div>{description}</div>
                   </li>
