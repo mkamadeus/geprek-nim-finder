@@ -19,16 +19,6 @@ const Header: React.FC = () => {
     return geprekList[Math.floor(Math.random() * geprekList.length)];
   }, []);
 
-  // const [isDarkMode, setDarkMode] = useLocalStorage<boolean>('darkMode', false);
-
-  // useEffect(() => {
-  //   if (isDarkMode) {
-  //     document.getElementsByTagName('html')[0].classList.add('dark');
-  //   } else {
-  //     document.getElementsByTagName('html')[0].classList.remove('dark');
-  //   }
-  // }, [isDarkMode]);
-
   const { isDarkMode, setDarkMode } = useContext(ThemeContext);
 
   return (
@@ -36,7 +26,7 @@ const Header: React.FC = () => {
       <div className="flex justify-between items-center">
         <div>
           <div className="flex items-center font-semibold text-xl text-teal-400 dark:text-teal-300">
-            <div className="pr-4">Geprek NIM Finder</div>
+            <h1 className="pr-4">Geprek NIM Finder</h1>
             <div className="w-3 h-3">
               <Link to="/help">
                 <img
@@ -46,6 +36,7 @@ const Header: React.FC = () => {
                     filter:
                       'invert(100%) sepia(57%) saturate(667%) hue-rotate(280deg) brightness(120%) contrast(87%)',
                   }}
+                  alt="help-button"
                 />
               </Link>
             </div>

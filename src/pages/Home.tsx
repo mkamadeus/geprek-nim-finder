@@ -13,14 +13,14 @@ const Home = (_: RouteComponentProps) => {
           <div className="pb-3">
             <Header />
           </div>
-          <div className="flex flex-col justify-center">
+          <main className="flex flex-col justify-center">
             <div className="pb-2">
               <SearchBar />
             </div>
             <div className="flex-1">
               <StudentList />
             </div>
-          </div>
+          </main>
         </div>
       </div>
     </SearchContextProvider>

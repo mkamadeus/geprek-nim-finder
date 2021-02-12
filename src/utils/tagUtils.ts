@@ -79,7 +79,7 @@ export const checkMatch = (
 ) => {
   // First check -- word check
   for (const keyword of keywordsWithoutNumber) {
-    if (keyword.length < 2) continue;
+    if (keyword.length < 3) continue;
 
     const status = studentData[0].toLowerCase().includes(keyword.toLowerCase());
     if (status) return status;
@@ -87,7 +87,7 @@ export const checkMatch = (
 
   // Second check -- number check
   for (const keyword of keywordsWithNumber) {
-    if (keyword.length < 2) continue;
+    if (keyword.length < 3) continue;
 
     const status =
       studentData[1].startsWith(keyword) ||

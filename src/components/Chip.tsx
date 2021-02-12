@@ -29,6 +29,7 @@ const Chip: React.FC<Props> = (props: Props) => {
             filter:
               'invert(99%) sepia(10%) saturate(2%) hue-rotate(98deg) brightness(104%) contrast(101%)',
           }}
+          alt="chip-close-button"
         />
       </div>
     </div>

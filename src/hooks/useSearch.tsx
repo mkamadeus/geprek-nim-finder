@@ -56,7 +56,7 @@ export const useSearch = () => {
         const xsplit = x[0].split(' ');
         const ysplit = y[0].split(' ');
         for (const keyword of keywordsWithoutNumber) {
-          if (keyword.length < 2) continue;
+          if (keyword.length < 3) continue;
 
           for (const namePhrase of xsplit) {
             if (namePhrase.toLowerCase().startsWith(keyword.toLowerCase()))
@@ -70,6 +70,15 @@ export const useSearch = () => {
             if (namePhrase.toLowerCase().endsWith(keyword.toLowerCase()))
               yrank += 2;
           }
+        }
+
+        for (const keyword of keywordsWithNumber) {
+          if (keyword.length < 3) continue;
+
+          if (x[1].includes(keyword) || (x[2] && x[2].includes(keyword)))
+            xrank += 5;
+          if (y[1].includes(keyword) || (y[2] && y[2].includes(keyword)))
+            yrank += 5;
         }
 
         return yrank - xrank;

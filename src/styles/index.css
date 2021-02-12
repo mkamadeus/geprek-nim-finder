@@ -4,6 +4,7 @@
     url('/fonts/AvenirNextRoundedStd-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
     url('/fonts/AvenirNextRoundedStd-BoldIt.woff') format('woff');
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -20,6 +22,7 @@
     url('/fonts/AvenirNextRoundedStd-Reg.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -28,6 +31,7 @@
     url('/fonts/AvenirNextRoundedStd-Med.woff') format('woff');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -36,6 +40,7 @@
     url('/fonts/AvenirNextRoundedStd-DemiIt.woff') format('woff');
   font-weight: 600;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -44,6 +49,7 @@
     url('/fonts/AvenirNextRoundedStd-MedIt.woff') format('woff');
   font-weight: 500;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -52,6 +58,7 @@
     url('/fonts/AvenirNextRoundedStd-Demi.woff') format('woff');
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -60,6 +67,7 @@
     url('/fonts/AvenirNextRoundedStd-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @tailwind base;
