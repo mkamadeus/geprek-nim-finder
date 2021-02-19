@@ -14,7 +14,7 @@ const Home = (_: RouteComponentProps) => {
             <Header />
           </div>
           <main className="flex flex-col justify-center">
-            <div className="pb-2">
+            <div className="">
               <SearchBar />
             </div>
             <div className="flex-1">

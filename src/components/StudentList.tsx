@@ -36,7 +36,7 @@ const StudentList = () => {
         <div className="flex justify-center w-full">
           {result.length !== count ? (
             <button
-              className="border border-teal-500 rounded text-teal-500 px-2 p-1 outline-none"
+              className="border border-teal-500 dark:border-gray-700 rounded text-teal-500 dark:text-gray-100 px-4 py-2 outline-none bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150"
               onClick={loadMore}
             >
               Load more...

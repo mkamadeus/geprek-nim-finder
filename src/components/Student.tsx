@@ -43,7 +43,7 @@ const Student = (props: Props) => {
     <div className="flex justify-between items-center py-2">
       <div>
         <div
-          className="text-sm font-medium  dark:text-gray-200 cursor-pointer hover:animate-pulse"
+          className="text-sm md:text-base font-medium dark:text-gray-200 cursor-pointer hover:animate-pulse"
           ref={nameRef}
           onClick={() => {
             copyToClipboard(nameRef.current?.innerHTML!);
@@ -51,14 +51,14 @@ const Student = (props: Props) => {
         >
           {props.name}
         </div>
-        <div className="text-xs italic text-gray-500 dark:text-gray-300 select-none">
+        <div className="text-xs md:text-sm italic text-gray-500 dark:text-gray-300 select-none">
           {major || faculty}
         </div>
       </div>
       <div>
         {major ? (
           <div
-            className={`text-xs text-gray-500  dark:text-gray-300 cursor-pointer hover:animate-pulse`}
+            className={`text-xs md:text-sm text-gray-500  dark:text-gray-300 cursor-pointer hover:animate-pulse`}
             ref={majorIdRef}
             onClick={() => {
               copyToClipboard(majorIdRef.current?.innerHTML!);
@@ -68,7 +68,7 @@ const Student = (props: Props) => {
           </div>
         ) : null}
         <div
-          className={`text-xs text-gray-500  dark:text-gray-300 ${
+          className={`text-xs md:text-sm text-gray-500  dark:text-gray-300 ${
             major ? 'select-none' : ''
           } cursor-pointer hover:animate-pulse`}
           ref={facultyIdRef}

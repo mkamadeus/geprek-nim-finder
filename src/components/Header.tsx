@@ -25,7 +25,7 @@ const Header: React.FC = () => {
     <>
       <div className="flex justify-between items-center">
         <div>
-          <div className="flex items-center font-semibold text-xl text-teal-400 dark:text-teal-300">
+          <div className="flex items-center font-semibold text-xl md:text-xl text-teal-400 dark:text-teal-300">
             <h1 className="pr-4">Geprek NIM Finder</h1>
             <div className="w-3 h-3">
               <Link to="/help">
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="text-xs text-gray-400 dark:text-white italic">
+          <div className="text-xs md:text-sm text-gray-400 dark:text-white italic">
             Digeprek oleh {geprek}.
           </div>
         </div>
