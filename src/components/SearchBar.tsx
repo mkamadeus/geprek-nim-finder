@@ -16,8 +16,10 @@ const SearchBar: React.FC<Props> = (props: Props) => {
     if (inputValue[inputValue.length - 1] === '?') {
       const phrase = splittedInput[splittedInput.length - 1];
       if (isTag(phrase)) {
-        const tagValue = phrase.slice(1, phrase.length - 1);
-        setChips(chips.length === 0 ? tagValue : chips + `,${tagValue}`);
+        const tagValue = phrase.slice(1, phrase.length - 1).replaceAll('', '');
+        if (tagValue.length !== 0) {
+          setChips(chips.length === 0 ? tagValue : chips + `,${tagValue}`);
+        }
       }
       inputValue = splittedInput
         .filter((phrase) => {
