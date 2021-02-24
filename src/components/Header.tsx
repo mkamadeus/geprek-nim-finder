@@ -26,7 +26,7 @@ const Header: React.FC = () => {
       <div className="flex justify-between items-center">
         <div>
           <div className="flex items-center font-semibold text-xl md:text-xl text-teal-400 dark:text-teal-300">
-            <h1 className="pr-4">Geprek NIM Finder</h1>
+            <h1 className="pr-4">Geprek ITB NIM Finder</h1>
             <div className="w-3 h-3">
               <Link to="/help">
                 <img
