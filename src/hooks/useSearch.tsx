@@ -20,10 +20,18 @@ export const useSearch = () => {
   );
 
   const verifyStudentData = useCallback(async () => {
-    if (!studentData) {
+    let item = window.localStorage.getItem("ver");
+    let lastver = "data_13_21.json";
+    if(item){
+      if(item !== lastver){
+        item = null;
+      }
+    }
+    if (!studentData || !item) {
       await Axios.get(
-        'https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@latest/src/json/data_13_20.json',
+        'https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@latest/src/json/'+lastver,
       ).then((result) => {
+        window.localStorage.setItem("ver", lastver);
         setStudentData(result.data);
       });
     }
