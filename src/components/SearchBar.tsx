@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { isTag, tokenizeTag } from '@/utils/tagUtils';
+import { isTag, tokenizeTag } from '~/utils/tagUtils';
 import Chip from './Chip';
-import { SearchContext } from '@/context/SearchContext';
+import { SearchContext } from '~/context/SearchContext';
 
 interface Props {}
 
@@ -59,8 +59,9 @@ const SearchBar: React.FC<Props> = (props: Props) => {
         <input
           value={keywords}
           onChange={onSearch}
-          className="outline-none w-full bg-transparent dark:text-white"
+          className="outline-none w-full bg-transparent dark:text-white px-1"
           role="textbox"
+          autoFocus
         />
       </form>
       <div className="flex overflow-hidden md:flex-wrap w-full -mx-1 p-1">{chipArray()}</div>

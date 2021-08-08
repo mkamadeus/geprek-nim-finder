@@ -1,7 +1,8 @@
+import { InformationCircleOutline } from '@graywolfai/react-heroicons';
 import { RouteComponentProps } from '@reach/router';
 import React from 'react';
-import facultyData from '@/json/kode_fakultas.json';
-import majorData from '@/json/kode_jurusan.json';
+import facultyData from '~/json/kode_fakultas.json';
+import majorData from '~/json/kode_jurusan.json';
 
 interface Props {}
 
@@ -31,7 +32,10 @@ const Help = (props: RouteComponentProps) => {
       <div className="container mx-auto p-6 lg:px-64">
         <div className="pb-3">
           <div>
-            <div className="font-semibold text-xl text-teal-400 dark:text-teal-300">Bantuan</div>
+            <div className="font-semibold text-xl text-teal-400 dark:text-teal-300 inline-flex items-center">
+              <InformationCircleOutline className="w-5 h-5 mr-2" />
+              Bantuan
+            </div>
             <div className="text-xs text-gray-400 dark:text-white italic">
               Bagi kalian yang suka ayam geprek.
             </div>
@@ -66,7 +70,7 @@ const Help = (props: RouteComponentProps) => {
           <div className="my-2">
             Terkait pencarian fakultas, saat ini bisa dilakukan lewat pencarian dari inisial suatu
             fakultas diikuti dengan tahunnya, seperti contoh{' '}
-            <code className="bg-teal-200 text-gray-700">
+            <code>
               {Object.keys(majorData)[Math.floor(Math.random() * Object.keys(majorData).length)]}
               18
             </code>
@@ -74,34 +78,32 @@ const Help = (props: RouteComponentProps) => {
           </div>
           <div className="my-2">
             Pencarian dengan chips bisa dilakukan dengan mengetikan dalam format{' '}
-            <code className="bg-teal-200 text-gray-700">?&lt;query anda&gt;?</code>.
+            <code>?&lt;query anda&gt;?</code>.
           </div>
           <div className="my-2">
             Berikut ini daftar dari kode yang valid, tidak peduli dengan kapitalisasinya:
-            <ul className="pl-6 my-1">
+            <div className="flex flex-wrap my-1">
               {(() => {
                 const result: JSX.Element[] = [];
                 for (const key of Object.keys(facultyData)) {
                   const castedKey = key as keyof typeof facultyData;
                   result.push(
-                    <li className="list-disc">
-                      <code className="bg-teal-200 text-gray-700">{castedKey}</code> untuk{' '}
-                      {facultyData[castedKey]}
-                    </li>,
+                    <div className="pr-2">
+                      <code>{castedKey}</code> untuk {facultyData[castedKey]}
+                    </div>,
                   );
                 }
                 for (const key of Object.keys(majorData)) {
                   const castedKey = key as keyof typeof majorData;
                   result.push(
-                    <li className="list-disc">
-                      <code className="bg-teal-200 text-gray-700">{castedKey}</code> untuk{' '}
-                      {majorData[castedKey]}
-                    </li>,
+                    <div className="pr-2">
+                      <code>{castedKey}</code> untuk {majorData[castedKey]}
+                    </div>,
                   );
                 }
                 return result;
               })()}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
+import { XOutline } from '@graywolfai/react-heroicons';
 import React, { useEffect, useState } from 'react';
 import useSpring from 'react-use/lib/useSpring';
-import Cross from '@/svg/cross.svg';
+import Cross from '~/svg/cross.svg';
 
 interface Props {
   name: string;
@@ -22,15 +23,7 @@ const Chip: React.FC<Props> = (props: Props) => {
     >
       <div className="px-1 text-xs select-none">{props.name}</div>
       <div className="w-4 h-4 cursor-pointer" onClick={props.onClose}>
-        <img
-          className="w-4 h-4 text-white"
-          src={Cross}
-          style={{
-            filter:
-              'invert(99%) sepia(10%) saturate(2%) hue-rotate(98deg) brightness(104%) contrast(101%)',
-          }}
-          alt="chip-close-button"
-        />
+        <XOutline className="w-4 h-4 text-white" />
       </div>
     </div>
   );

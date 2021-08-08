@@ -1,8 +1,8 @@
 import React from 'react';
-import SearchBar from '@/components/SearchBar';
-import StudentList from '@/components/StudentList';
-import SearchContextProvider from '@/context/SearchContext';
-import Header from '@/components/Header';
+import SearchBar from '~/components/SearchBar';
+import StudentList from '~/components/StudentList';
+import SearchContextProvider from '~/context/SearchContext';
+import Header from '~/components/Header';
 import { RouteComponentProps } from '@reach/router';
 
 const Home = (_: RouteComponentProps) => {

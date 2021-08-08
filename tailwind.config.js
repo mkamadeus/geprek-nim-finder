@@ -1,6 +1,7 @@
 module.exports = {
   purge: ['./src/**/*.tsx'],
-  darkMode: 'class', // or 'media' or 'class'
+  mode: 'jit',
+  darkMode: 'class',
   theme: {
     fontFamily: {
       sans: ['Avenir Next Rounded Std'],
