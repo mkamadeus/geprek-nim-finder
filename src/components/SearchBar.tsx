@@ -59,8 +59,9 @@ const SearchBar: React.FC<Props> = (props: Props) => {
         <input
           value={keywords}
           onChange={onSearch}
-          className="outline-none w-full bg-transparent dark:text-white"
+          className="outline-none w-full bg-transparent dark:text-white px-1"
           role="textbox"
+          autoFocus
         />
       </form>
       <div className="flex overflow-hidden md:flex-wrap w-full -mx-1 p-1">{chipArray()}</div>

@@ -77,6 +77,11 @@
 
 @tailwind base;
 @tailwind components;
+
+code {
+  @apply bg-gray-200 dark:bg-gray-600 p-0.5 rounded-sm;
+}
+
 @tailwind utilities;
 
 /* ::selection,
