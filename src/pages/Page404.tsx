@@ -10,9 +10,7 @@ const Page404 = (props: RouteComponentProps) => {
           <div className="w-20 h-20 mb-4">
             <img src={Chicken} alt="geprek-icon" />
           </div>
-          <div className="font-semibold text-4xl text-center text-teal-400">
-            404
-          </div>
+          <div className="font-semibold text-4xl text-center text-teal-400">404</div>
           <div className="italic text-sm text-gray-500 dark:text-gray-100">
             Lhoo.. kayaknya salah geprek deh.
           </div>

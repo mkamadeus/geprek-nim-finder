@@ -17,13 +17,11 @@ const searchModes = [
   },
   {
     name: 'Pencarian lewat kode fakultas/jurusan',
-    description:
-      'Anda dapat mencari orang berdasarkan tahun dan fakultas/jurusannya.',
+    description: 'Anda dapat mencari orang berdasarkan tahun dan fakultas/jurusannya.',
   },
   {
     name: 'Pencarian menggunakan chips / filter',
-    description:
-      'Anda bisa menambahkan filter lewat chips, demi kemudahan pencarian.',
+    description: 'Anda bisa menambahkan filter lewat chips, demi kemudahan pencarian.',
   },
 ];
 
@@ -33,9 +31,7 @@ const Help = (props: RouteComponentProps) => {
       <div className="container mx-auto p-6 lg:px-64">
         <div className="pb-3">
           <div>
-            <div className="font-semibold text-xl text-teal-400 dark:text-teal-300">
-              Bantuan
-            </div>
+            <div className="font-semibold text-xl text-teal-400 dark:text-teal-300">Bantuan</div>
             <div className="text-xs text-gray-400 dark:text-white italic">
               Bagi kalian yang suka ayam geprek.
             </div>
@@ -43,21 +39,19 @@ const Help = (props: RouteComponentProps) => {
         </div>
         <div className="flex flex-col justify-center text-sm text-gray-700 dark:text-gray-100">
           <div className="my-2">
-            Halo! Jika Anda berada di page ini, Anda tentu ingin mengetahui
-            lebih banyak terkait situs ini.
+            Halo! Jika Anda berada di page ini, Anda tentu ingin mengetahui lebih banyak terkait
+            situs ini.
           </div>
           <div className="my-2">
-            Situs ini dibuat dengan tujuan untuk mencari nama dan NIM bagi
-            mahasiswa ITB. Tenang saja, situs ini tidak mengumbar data pribadi
-            dari mahasiswa ITB kok :-)
+            Situs ini dibuat dengan tujuan untuk mencari nama dan NIM bagi mahasiswa ITB. Tenang
+            saja, situs ini tidak mengumbar data pribadi dari mahasiswa ITB kok :-)
           </div>
           <div className="my-2">
-            Untuk mencari mahasiswa ITB yang dimaksud, bisa dilakukan pencarian
-            terhadap nama, NIM, fakultas, atau jurusan yang bersangkutan.
+            Untuk mencari mahasiswa ITB yang dimaksud, bisa dilakukan pencarian terhadap nama, NIM,
+            fakultas, atau jurusan yang bersangkutan.
           </div>
           <div className="my-2">
-            Berikut ini penjelasan terkait beberapa mode pencarian yang bisa
-            dilakukan.
+            Berikut ini penjelasan terkait beberapa mode pencarian yang bisa dilakukan.
             <ul className="pl-6 my-1">
               {searchModes.map(({ name, description }, index) => {
                 return (
@@ -70,28 +64,20 @@ const Help = (props: RouteComponentProps) => {
             </ul>
           </div>
           <div className="my-2">
-            Terkait pencarian fakultas, saat ini bisa dilakukan lewat pencarian
-            dari inisial suatu fakultas diikuti dengan tahunnya, seperti contoh{' '}
+            Terkait pencarian fakultas, saat ini bisa dilakukan lewat pencarian dari inisial suatu
+            fakultas diikuti dengan tahunnya, seperti contoh{' '}
             <code className="bg-teal-200 text-gray-700">
-              {
-                Object.keys(majorData)[
-                  Math.floor(Math.random() * Object.keys(majorData).length)
-                ]
-              }
+              {Object.keys(majorData)[Math.floor(Math.random() * Object.keys(majorData).length)]}
               18
             </code>
             .
           </div>
           <div className="my-2">
             Pencarian dengan chips bisa dilakukan dengan mengetikan dalam format{' '}
-            <code className="bg-teal-200 text-gray-700">
-              ?&lt;query anda&gt;?
-            </code>
-            .
+            <code className="bg-teal-200 text-gray-700">?&lt;query anda&gt;?</code>.
           </div>
           <div className="my-2">
-            Berikut ini daftar dari kode yang valid, tidak peduli dengan
-            kapitalisasinya:
+            Berikut ini daftar dari kode yang valid, tidak peduli dengan kapitalisasinya:
             <ul className="pl-6 my-1">
               {(() => {
                 const result: JSX.Element[] = [];
@@ -99,10 +85,8 @@ const Help = (props: RouteComponentProps) => {
                   const castedKey = key as keyof typeof facultyData;
                   result.push(
                     <li className="list-disc">
-                      <code className="bg-teal-200 text-gray-700">
-                        {castedKey}
-                      </code>{' '}
-                      untuk {facultyData[castedKey]}
+                      <code className="bg-teal-200 text-gray-700">{castedKey}</code> untuk{' '}
+                      {facultyData[castedKey]}
                     </li>,
                   );
                 }
@@ -110,10 +94,8 @@ const Help = (props: RouteComponentProps) => {
                   const castedKey = key as keyof typeof majorData;
                   result.push(
                     <li className="list-disc">
-                      <code className="bg-teal-200 text-gray-700">
-                        {castedKey}
-                      </code>{' '}
-                      untuk {majorData[castedKey]}
+                      <code className="bg-teal-200 text-gray-700">{castedKey}</code> untuk{' '}
+                      {majorData[castedKey]}
                     </li>,
                   );
                 }

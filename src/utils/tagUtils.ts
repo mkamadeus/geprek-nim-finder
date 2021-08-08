@@ -90,8 +90,7 @@ export const checkMatch = (
     if (keyword.length < 3) continue;
 
     const status =
-      studentData[1].startsWith(keyword) ||
-      (studentData[2] && studentData[2].startsWith(keyword));
+      studentData[1].startsWith(keyword) || (studentData[2] && studentData[2].startsWith(keyword));
     if (status) return status;
   }
 

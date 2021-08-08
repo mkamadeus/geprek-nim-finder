@@ -19,10 +19,7 @@ const Student = (props: Props) => {
 
   const getMajor = () => {
     if (props.majorId) {
-      const majorCode: keyof typeof majorMap = props.majorId.slice(
-        0,
-        3,
-      ) as keyof typeof majorMap;
+      const majorCode: keyof typeof majorMap = props.majorId.slice(0, 3) as keyof typeof majorMap;
       return majorMap[majorCode];
     }
     return undefined;

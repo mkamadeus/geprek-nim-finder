@@ -20,9 +20,7 @@ const ThemeContextProvider: React.FC = ({ children }) => {
   }, [isDarkMode]);
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode, setDarkMode }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={{ isDarkMode, setDarkMode }}>{children}</ThemeContext.Provider>
   );
 };
 

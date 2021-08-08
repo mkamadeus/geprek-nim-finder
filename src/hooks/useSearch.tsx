@@ -15,23 +15,21 @@ export const useSearch = () => {
   const [count, setCount] = useState<number>(0);
   const [isLoading, setLoading] = useState<boolean>(false);
 
-  const [studentData, setStudentData] = useLocalStorage<string[][]>(
-    'studentData',
-  );
+  const [studentData, setStudentData] = useLocalStorage<string[][]>('studentData');
 
   const verifyStudentData = useCallback(async () => {
-    let item = window.localStorage.getItem("ver");
-    let lastver = "data_13_21.json";
-    if(item){
-      if(item !== lastver){
+    let item = window.localStorage.getItem('ver');
+    let lastVersion = 'data_13_21.json';
+    if (item) {
+      if (item !== lastVersion) {
         item = null;
       }
     }
     if (!studentData || !item) {
       await Axios.get(
-        'https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@main/src/json/'+lastver,
+        `https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@main/src/json/${lastVersion}`,
       ).then((result) => {
-        window.localStorage.setItem("ver", lastver);
+        window.localStorage.setItem('ver', lastVersion);
         setStudentData(result.data);
       });
     }
@@ -82,17 +80,13 @@ export const useSearch = () => {
           if (keyword.length < 3) continue;
 
           for (const namePhrase of xsplit) {
-            if (namePhrase.toLowerCase().startsWith(keyword.toLowerCase()))
-              xrank += 3 * mult;
-            if (namePhrase.toLowerCase().endsWith(keyword.toLowerCase()))
-              xrank += 2 * mult;
+            if (namePhrase.toLowerCase().startsWith(keyword.toLowerCase())) xrank += 3 * mult;
+            if (namePhrase.toLowerCase().endsWith(keyword.toLowerCase())) xrank += 2 * mult;
             mult *= 0.9;
           }
           for (const namePhrase of ysplit) {
-            if (namePhrase.toLowerCase().startsWith(keyword.toLowerCase()))
-              yrank += 3 * mult;
-            if (namePhrase.toLowerCase().endsWith(keyword.toLowerCase()))
-              yrank += 2 * mult;
+            if (namePhrase.toLowerCase().startsWith(keyword.toLowerCase())) yrank += 3 * mult;
+            if (namePhrase.toLowerCase().endsWith(keyword.toLowerCase())) yrank += 2 * mult;
             mult *= 0.9;
           }
         }
@@ -100,10 +94,8 @@ export const useSearch = () => {
         for (const keyword of keywordsWithNumber) {
           if (keyword.length < 3) continue;
 
-          if (x[1].includes(keyword) || (x[2] && x[2].includes(keyword)))
-            xrank += 5;
-          if (y[1].includes(keyword) || (y[2] && y[2].includes(keyword)))
-            yrank += 5;
+          if (x[1].includes(keyword) || (x[2] && x[2].includes(keyword))) xrank += 5;
+          if (y[1].includes(keyword) || (y[2] && y[2].includes(keyword))) yrank += 5;
         }
 
         return yrank - xrank;

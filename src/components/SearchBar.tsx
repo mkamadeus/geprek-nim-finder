@@ -63,9 +63,7 @@ const SearchBar: React.FC<Props> = (props: Props) => {
           role="textbox"
         />
       </form>
-      <div className="flex overflow-hidden md:flex-wrap w-full -mx-1 p-1">
-        {chipArray()}
-      </div>
+      <div className="flex overflow-hidden md:flex-wrap w-full -mx-1 p-1">{chipArray()}</div>
     </>
   );
 };

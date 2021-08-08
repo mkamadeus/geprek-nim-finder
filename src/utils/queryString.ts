@@ -15,10 +15,7 @@ export const setQueryStringValue = (
   setQueryStringWithoutReload(`?${newValues}`);
 };
 
-export const getQueryStringValue = (
-  key: string,
-  queryString = window.location.search,
-) => {
+export const getQueryStringValue = (key: string, queryString = window.location.search) => {
   const values = parse(queryString);
   return values[key];
 };

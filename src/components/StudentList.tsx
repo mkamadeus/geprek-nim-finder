@@ -6,9 +6,7 @@ const StudentList = () => {
   const { keywords, chips, result, count, isLoading, loadMore } = useSearch();
 
   if (isLoading) {
-    return (
-      <div className="text-xs text-center italic text-gray-500">Loading...</div>
-    );
+    return <div className="text-xs text-center italic text-gray-500">Loading...</div>;
   } else if (keywords.length < 3 && chips.length === 0) {
     return (
       <div className="text-xs text-center italic text-gray-500">

@@ -17,10 +17,7 @@ export const SearchContext = React.createContext<SearchContextType>({
 
 const SearchContextProvider: React.FC = ({ children }) => {
   const params = new URLSearchParams(window.location.search);
-  const [keywords, setKeywords] = useQueryString(
-    'query',
-    params.get('query') || '',
-  );
+  const [keywords, setKeywords] = useQueryString('query', params.get('query') || '');
   const [chips, setChips] = useQueryString('chips', params.get('filter') || '');
 
   return (
