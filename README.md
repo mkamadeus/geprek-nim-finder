@@ -1,5 +1,7 @@
 # 🍗🔥 Geprek NIM Finder v2
 
+![](https://github.com/mkamadeus/nim-finder-v2/actions/workflows/lint.yml/badge.svg)
+
 ## Stack
 
 Bootstrapped with Vite.
