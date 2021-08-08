@@ -1,10 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 import Switch from './Switch';
-import Help from '@/svg/help.svg';
+import Help from '~/svg/help.svg';
 import { Link } from '@reach/router';
-import { ThemeContext } from '@/context/ThemeContext';
-
-interface Props {}
+import { ThemeContext } from '~/context/ThemeContext';
 
 const geprekList = [
   'Ayam Geprek Freedom',
@@ -30,7 +28,7 @@ const Header: React.FC = () => {
             <div className="w-3 h-3">
               <Link to="/help">
                 <img
-                  src={Help}
+                  src={'/svg/help.svg'}
                   className="w-full h-full"
                   style={{
                     filter:

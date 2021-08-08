@@ -1,13 +1,13 @@
 import { useCallback, useContext, useMemo, useState } from 'react';
 import { useAsync, useLocalStorage } from 'react-use';
-import { SearchContext } from '@/context/SearchContext';
+import { SearchContext } from '~/context/SearchContext';
 import Axios from 'axios';
 import {
   tokenizeTag,
   parseKeywordsWithNumber,
   parseKeywordsWithoutNumber,
   checkMatch,
-} from '@/utils/tagUtils';
+} from '~/utils/tagUtils';
 
 export const useSearch = () => {
   const { keywords, chips } = useContext(SearchContext);
@@ -18,18 +18,20 @@ export const useSearch = () => {
   const [studentData, setStudentData] = useLocalStorage<string[][]>('studentData');
 
   const verifyStudentData = useCallback(async () => {
-    let item = window.localStorage.getItem('ver');
+    let version = window.localStorage.getItem('version');
     let lastVersion = 'data_13_21.json';
-    if (item) {
-      if (item !== lastVersion) {
-        item = null;
-      }
+
+    // If current version is different than latest version,
+    // Remove cache
+    if (version && version !== lastVersion) {
+      version = null;
     }
-    if (!studentData || !item) {
+
+    if (!studentData || !version) {
       await Axios.get(
         `https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@main/src/json/${lastVersion}`,
       ).then((result) => {
-        window.localStorage.setItem('ver', lastVersion);
+        window.localStorage.setItem('version', lastVersion);
         setStudentData(result.data);
       });
     }

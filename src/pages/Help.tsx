@@ -1,7 +1,7 @@
 import { RouteComponentProps } from '@reach/router';
 import React from 'react';
-import facultyData from '@/json/kode_fakultas.json';
-import majorData from '@/json/kode_jurusan.json';
+import facultyData from '~/json/kode_fakultas.json';
+import majorData from '~/json/kode_jurusan.json';
 
 interface Props {}
 

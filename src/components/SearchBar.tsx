@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { isTag, tokenizeTag } from '@/utils/tagUtils';
+import { isTag, tokenizeTag } from '~/utils/tagUtils';
 import Chip from './Chip';
-import { SearchContext } from '@/context/SearchContext';
+import { SearchContext } from '~/context/SearchContext';
 
 interface Props {}
 

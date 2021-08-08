@@ -1,6 +1,6 @@
 import { hasNumber, isNumber } from './numberUtils';
-import facultyCode from '@/json/kode_fakultas.json';
-import majorCode from '@/json/kode_jurusan.json';
+import facultyCode from '~/json/kode_fakultas.json';
+import majorCode from '~/json/kode_jurusan.json';
 
 export const isTag = (text: string): boolean => {
   return text.length > 2 && text[0] === '?' && text[text.length - 1] === '?';

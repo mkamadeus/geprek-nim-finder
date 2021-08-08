@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useSpring from 'react-use/lib/useSpring';
-import Cross from '@/svg/cross.svg';
+import Cross from '~/svg/cross.svg';
 
 interface Props {
   name: string;

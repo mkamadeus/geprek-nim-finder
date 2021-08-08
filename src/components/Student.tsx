@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import majorMap from '@/json/list_jurusan.json';
-import facultyMap from '@/json/list_fakultas.json';
+import majorMap from '~/json/list_jurusan.json';
+import facultyMap from '~/json/list_fakultas.json';
 
 interface Props {
   name: string;
