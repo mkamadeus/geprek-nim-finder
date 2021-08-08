@@ -29,7 +29,7 @@ export const useSearch = () => {
     }
     if (!studentData || !item) {
       await Axios.get(
-        'https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@latest/src/json/'+lastver,
+        'https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@main/src/json/'+lastver,
       ).then((result) => {
         window.localStorage.setItem("ver", lastver);
         setStudentData(result.data);
