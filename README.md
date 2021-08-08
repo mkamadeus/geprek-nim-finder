@@ -1,11 +1,12 @@
-# Geprek NIM Finder v2
+# 🍗🔥 Geprek NIM Finder v2
 
 ## Stack
 
-Bootstrapped with Create Snowpack App (CSA).
-Other noteable stacks include : React, TailwindCSS, ESLint, Prettier.
+Bootstrapped with Vite.
 
-## Improvements from the First Iteration
+Other noteable stacks include : React, TailwindCSS, HeadlessUI, ESLint, Prettier.
+
+## Improvements from v1
 
 - No longer using a backend service, but instead using local storage to cache student data via CDN (jsDelivr).
 - Removed regex usage, as regex tend to be slow
