@@ -5,8 +5,8 @@
     "build": "cross-env NODE_ENV=production vite build",
     "preview": "cross-env NODE_ENV=production vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "eslint . --max-warnings 0",
-    "lint:fix": "eslint --fix ."
+    "lint": "eslint ./src/**/*.tsx --max-warnings 0",
+    "lint:fix": "eslint --fix ./src/**/*.tsx"
   },
   "dependencies": {
     "@graywolfai/react-heroicons": "^1.2.3",
