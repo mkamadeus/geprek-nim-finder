@@ -4,8 +4,7 @@ import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const SheetsFunction = `
-function itbStudent(nim) {
+const SheetsFunction = `function itbStudent(nim) {
   const response = UrlFetchApp.fetch("https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@main/src/json/${localStorage.getItem(
     'version',
   )}.json", {'method' : 'get',})
@@ -14,8 +13,7 @@ function itbStudent(nim) {
   return v[1] == nim || v[2] == nim
   })
   return filtered[0][0]
-}
-`;
+}`;
 
 const Sheets = (props: RouteComponentProps) => {
   return (

@@ -26,7 +26,7 @@ const searchModes = [
   },
 ];
 
-const Help = (props: RouteComponentProps) => {
+const Help: React.FC<RouteComponentProps> = () => {
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       <div className="container mx-auto p-6 lg:px-64">
