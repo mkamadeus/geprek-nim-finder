@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSearch } from '~/hooks/useSearch';
 import Student from './Student';
+import { VERSION } from '~/constants/version';
 
 const StudentList = () => {
   const { keywords, chips, result, count, isLoading, loadMore } = useSearch();
@@ -10,7 +11,7 @@ const StudentList = () => {
   } else if (keywords.length < 3 && chips.length === 0) {
     return (
       <div className="text-xs text-center italic text-gray-500">
-        Hasil pencarian akan keluar di sini.
+        Hasil pencarian akan keluar di sini. {VERSION}
       </div>
     );
   } else {
