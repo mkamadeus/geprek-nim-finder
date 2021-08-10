@@ -24,6 +24,7 @@
     "react-dom": "^17.0.2",
     "react-syntax-highlighter": "^15.4.4",
     "react-use": "^17.2.4",
+    "rebound": "^0.1.0",
     "tailwindcss": "^2.2.7",
     "vite": "^2.4.4"
   },
