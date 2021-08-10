@@ -29,7 +29,7 @@ export const useSearch = () => {
 
     if (!studentData || !version) {
       await Axios.get(
-        `https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@main/src/json/${lastVersion}`,
+        `https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@v2.1.1/src/json/${lastVersion}`,
       ).then((result) => {
         window.localStorage.setItem('version', lastVersion);
         setStudentData(result.data);
@@ -39,6 +39,11 @@ export const useSearch = () => {
 
   const loadMore = () => {
     setCount(count + (result.length - count < 10 ? result.length - count : 10));
+  };
+
+  const resetCache = () => {
+    window.localStorage.setItem('version', '');
+    window.location.reload();
   };
 
   const keywordsWithoutNumber = useMemo<string[]>(() => {
@@ -120,5 +125,5 @@ export const useSearch = () => {
     }
   }, [keywords, chips]);
 
-  return { result, count, isLoading, keywords, chips, loadMore };
+  return { result, count, isLoading, keywords, chips, loadMore, resetCache };
 };

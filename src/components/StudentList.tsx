@@ -4,7 +4,7 @@ import Student from './Student';
 import { VERSION } from '~/constants/version';
 
 const StudentList = () => {
-  const { keywords, chips, result, count, isLoading, loadMore } = useSearch();
+  const { keywords, chips, result, count, isLoading, loadMore, resetCache } = useSearch();
 
   if (isLoading) {
     return <div className="text-xs text-center italic text-gray-500">Loading...</div>;
@@ -12,6 +12,12 @@ const StudentList = () => {
     return (
       <div className="text-xs text-center italic text-gray-500">
         Hasil pencarian akan keluar di sini. {VERSION}
+        <br />
+        Data kurang lengkap?{' '}
+        <span className="underline cursor-pointer" onClick={() => resetCache()}>
+          Reset cache
+        </span>
+        .
       </div>
     );
   } else {
