@@ -7,7 +7,7 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const SheetsFunction = `function itbStudent(nim) {
   const response = UrlFetchApp.fetch("https://cdn.jsdelivr.net/gh/mkamadeus/nim-finder-v2@main/src/json/${localStorage.getItem(
     'version',
-  )}.json", {'method' : 'get',})
+  )}", {'method' : 'get',})
   const data = JSON.parse(response.getContentText());
   const filtered = data.filter((v) => {
   return v[1] == nim || v[2] == nim
