@@ -1,5 +1,5 @@
-export interface IStudent {
-  n: string;
-  f: string;
-  j: string;
-}
+export type Student = {
+  name: string;
+  tpbID: string;
+  majorID?: string;
+};

@@ -1,18 +1,20 @@
 {
-  "include": ["src", "types"],
   "compilerOptions": {
-    "module": "esnext",
     "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "preserve",
-    "baseUrl": "src",
-    "paths": {
-      "~/*": ["./*"]
-    },
     "strict": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+    "sourceMap": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
-  }
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "types": ["vite-plugin-vue-layouts/client"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

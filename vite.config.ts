@@ -1,13 +1,59 @@
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
+import vue from '@vitejs/plugin-vue';
+import unocss from 'unocss/vite';
+import autoimports from 'unplugin-auto-import/vite';
+import components from 'unplugin-vue-components/vite';
+import icons from 'unplugin-icons/vite';
+import iconsResolver from 'unplugin-icons/resolver';
+import pages from 'vite-plugin-pages';
+import markdown from 'vite-plugin-md';
+import layouts from 'vite-plugin-vue-layouts';
 import path from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [reactRefresh()],
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, '/src'),
+      '~/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
+  plugins: [
+    vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+    markdown({
+      markdownItOptions: {
+        html: true,
+        linkify: true,
+        typographer: true,
+      },
+    }),
+    unocss({
+      configFile: 'unocss.config.ts',
+    }),
+    autoimports({
+      dts: 'src/autoimports.d.ts',
+      include: [/\.vue$/, /\.vue\?vue/],
+      imports: ['vue', 'vue-router', '@vueuse/core'],
+    }),
+    components({
+      dts: 'src/components.d.ts',
+      dirs: ['src/components'],
+      resolvers: [iconsResolver()],
+    }),
+    pages({
+      extensions: ['vue', 'md'],
+      extendRoute(route, parent) {
+        if (route.component.includes('.md')) {
+          console.log(route.component);
+          return {
+            ...route,
+            meta: { layout: 'rfc' },
+          };
+        }
+        return route;
+      },
+    }),
+    layouts(),
+    icons(),
+  ],
 });
