@@ -1,17 +1,19 @@
 import { defineStore } from 'pinia';
 import { Student } from '~/models/Student';
 import { hasNumber, isNumber } from '~/utils/numberUtils';
-import { levenshtein } from '~/utils/string';
+import studentData from '~/json/data.json';
 
 import c from '~/json/codes.json';
+import { useSettings } from './settings';
 const codes = c as { [key: string]: string };
 
 export const useSearch = defineStore('search', {
   // initiate default state
   state: () => {
-    const rawStudentData = JSON.parse(localStorage.getItem('geprek-data') as string) as string[][];
-    const chips = JSON.parse(localStorage.getItem('geprek-chips') as string) as string[];
-    const query = (localStorage.getItem('geprek-query') as string) || '';
+    const rawStudentData: string[][] =
+      JSON.parse(localStorage.getItem('geprek-data') as string) || studentData;
+    const chips: string[] = JSON.parse(localStorage.getItem('geprek-chips') as string) || [];
+    const query: string = (localStorage.getItem('geprek-query') as string) || '';
 
     return {
       query,
@@ -40,7 +42,13 @@ export const useSearch = defineStore('search', {
     removeChip(index: number) {
       this.chips.splice(index, 1);
     },
+    resetResult() {
+      this.result = [] as [Student, number][];
+    },
     getResult() {
+      //load settings
+      const settings = useSettings();
+
       // parse query
       const tokenized = this.query.split(' ');
       const alphabetic: string[] = [];
@@ -50,6 +58,7 @@ export const useSearch = defineStore('search', {
       // regex prefix
       const prefixRegex = /([A-z]{2,})([0-9]{2}([0-9]{2})?)/;
 
+      // parse query to different types
       for (let t of tokenized) {
         if (t.length < 1) continue;
         t = t.toLowerCase();
@@ -66,9 +75,10 @@ export const useSearch = defineStore('search', {
       }
 
       // only sort containing results
-
-      console.log(alphabetic, numeric, prefixes);
       const filtered = this.students
+        .filter((s) => {
+          return 2000 + parseInt(s.tpbID.slice(3, 5)) >= settings.yearLimit;
+        })
         // sort for specific
         .filter((s) => {
           if (prefixes.length === 0) return true;
@@ -78,53 +88,52 @@ export const useSearch = defineStore('search', {
           }
 
           return false;
-        });
+        })
+        // filter result by name and nim keyword
+        .reduce((result, s) => {
+          let score = 0;
+          let included = false;
 
-      console.log(filtered);
-      const filtered2 = filtered.reduce((result, s) => {
-        let score = 0;
-        let included = false;
+          // ===== FILTER BY NAME =====
 
-        // ===== FILTER BY NAME =====
+          if (alphabetic.length === 0 && numeric.length === 0) result.push([s, 0]);
 
-        if (alphabetic.length === 0 && numeric.length === 0) result.push([s, 0]);
+          // factor for prioritizing first keywords for ensuring name order
+          let factor = 1;
+          for (const t of alphabetic) {
+            const lowercased = s.name.toLowerCase();
+            if (lowercased.includes(t)) {
+              // calculate score
+              const tokenizedName = lowercased.split(' ');
 
-        // factor for prioritizing first keywords for ensuring name order
-        let factor = 1;
-        for (const t of alphabetic) {
-          const lowercased = s.name.toLowerCase();
-          if (lowercased.includes(t)) {
-            // calculate score
-            const tokenizedName = lowercased.split(' ');
+              for (const n of tokenizedName) {
+                if (n.startsWith(t)) score += 3 * factor;
+                if (n.endsWith(t)) score += 2 * factor;
+              }
 
-            for (const n of tokenizedName) {
-              if (n.startsWith(t)) score += 3 * factor;
-              if (n.endsWith(t)) score += 2 * factor;
+              included = true;
             }
-
-            included = true;
+            factor *= 0.9;
           }
-          factor *= 0.9;
-        }
 
-        // ===== FILTER BY NIM =====
+          // ===== FILTER BY NIM =====
 
-        for (const t of numeric) {
-          if (s.tpbID.includes(t) || (s.majorID && s.majorID.includes(t))) {
-            if (s.tpbID.startsWith(t) || (s.majorID && s.majorID.startsWith(t))) score += 3;
-            if (s.tpbID.endsWith(t) || (s.majorID && s.majorID.endsWith(t))) score += 2;
-            included = true;
+          for (const t of numeric) {
+            if (s.tpbID.includes(t) || (s.majorID && s.majorID.includes(t))) {
+              if (s.tpbID.startsWith(t) || (s.majorID && s.majorID.startsWith(t))) score += 3;
+              if (s.tpbID.endsWith(t) || (s.majorID && s.majorID.endsWith(t))) score += 2;
+              included = true;
+            }
           }
-        }
 
-        if (included) {
-          result.push([s, score]);
-        }
+          if (included) {
+            result.push([s, score]);
+          }
 
-        return result;
-      }, [] as [Student, number][]);
+          return result;
+        }, [] as [Student, number][]);
 
-      const result = filtered2.sort((s1, s2) => {
+      const result = filtered.sort((s1, s2) => {
         // first, sort by score
         if (s1[1] > s2[1]) return -1;
         if (s1[1] < s2[1]) return 1;

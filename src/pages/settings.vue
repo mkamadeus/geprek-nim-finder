@@ -13,12 +13,13 @@
     </div>
   </header>
   <!-- MAIN -->
-  <main flex="~ col" justify-center text="sm white">
+  <main flex="~ col" justify-center space-y-2 text="sm white">
     <div flex justify-between>
       <div>
         <div text-base>Mode pencarian</div>
         <div>Gunakan online mode untuk hasil pencarian yang lebih baik.</div>
       </div>
+      <div>lol</div>
     </div>
     <div>
       <div text-base>Batas angkatan</div>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { Student } from '~/models/Student';
 import m from '~/json/majors.json';
+import c from '~/json/codes.json';
 
 const majors = m as { [k: string]: string };
+const codeMap = c as { [k: string]: string };
 type Props = {
   student: Student;
 };

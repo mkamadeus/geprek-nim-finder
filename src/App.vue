@@ -1,7 +1,15 @@
 <script setup lang="ts">
-import studentData from '~/json/data_13_21.json';
+import studentData from '~/json/data.json';
+import { useSearch } from './store/search';
+import { useSettings } from './store/settings';
 
-const version = useStorage('geprek-version', '3.0.0');
+useSettings();
+useSearch();
+
+console.log('Ready to geprek!');
+
+useStorage('geprek-version', '3.0.0');
+const data = useStorage('geprek-data', studentData);
 </script>
 
 <template>

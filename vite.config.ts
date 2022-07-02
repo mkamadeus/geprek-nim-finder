@@ -33,7 +33,7 @@ export default defineConfig({
     autoimports({
       dts: 'src/autoimports.d.ts',
       include: [/\.vue$/, /\.vue\?vue/],
-      imports: ['vue', 'vue-router', '@vueuse/core'],
+      imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
     }),
     components({
       dts: 'src/components.d.ts',

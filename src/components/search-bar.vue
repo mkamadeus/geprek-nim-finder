@@ -9,6 +9,8 @@ const cachedChips = useStorage('geprek-chips', [] as string[]);
 const getQueryResult = useDebounceFn(() => {
   if (store.query.length >= 2) {
     store.getResult();
+  } else {
+    store.resetResult();
   }
 }, 500);
 
