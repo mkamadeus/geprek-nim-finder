@@ -5,8 +5,10 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Dropdown: typeof import('./components/common/dropdown.vue')['default']
     ICarbonBarrier: typeof import('~icons/carbon/barrier')['default']
     ICarbonBox: typeof import('~icons/carbon/box')['default']
+    ICarbonCaretUp: typeof import('~icons/carbon/caret-up')['default']
     ICarbonClose: typeof import('~icons/carbon/close')['default']
     ICarbonHome: typeof import('~icons/carbon/home')['default']
     ICarbonInformation: typeof import('~icons/carbon/information')['default']
@@ -20,6 +22,7 @@ declare module '@vue/runtime-core' {
     SearchBar: typeof import('./components/search-bar.vue')['default']
     Student: typeof import('./components/student.vue')['default']
     StudentList: typeof import('./components/student-list.vue')['default']
+    Switch: typeof import('./components/common/switch.vue')['default']
   }
 }
 
