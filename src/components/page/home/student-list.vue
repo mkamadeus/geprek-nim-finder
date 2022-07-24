@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useSearch } from '~/store/search';
 
-const version = localStorage.getItem('geprek-version');
 const store = useSearch();
+const version = useStorage('geprek-version', '3.0.0');
 
 const limit = ref(10);
 
@@ -20,6 +20,16 @@ watch(
     limit.value = 10;
   },
 );
+
+// reset cache/localstorage
+const clearCache = () => {
+  localStorage.removeItem('geprek-version');
+  localStorage.removeItem('geprek-query');
+  localStorage.removeItem('geprek-chips');
+  localStorage.removeItem('geprek-data');
+
+  window.location.reload();
+};
 </script>
 
 <template>
@@ -51,7 +61,7 @@ watch(
     italic
   >
     <div>Hasil pencarian akan keluar di sini. v{{ version }}.</div>
-    <div>Data kurang lengkap? <a>Reset cache</a>.</div>
+    <div>Data kurang lengkap? <a underline="~ dotted" @click="clearCache">Reset cache</a>.</div>
   </div>
   <div
     v-if="store.result.length === 0 && store.query.length !== 0"

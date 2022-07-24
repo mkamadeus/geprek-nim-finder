@@ -32,7 +32,7 @@ export default defineConfig({
     }),
     autoimports({
       dts: 'src/autoimports.d.ts',
-      include: [/\.vue$/, /\.vue\?vue/],
+      include: [/\.vue$/, /\.vue\?vue/, /\.ts$/],
       imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
     }),
     components({
@@ -43,8 +43,7 @@ export default defineConfig({
     pages({
       extensions: ['vue', 'md'],
       extendRoute(route, parent) {
-        if (route.component.includes('.md')) {
-          console.log(route.component);
+        if (route.component.includes('/rfc')) {
           return {
             ...route,
             meta: { layout: 'rfc' },

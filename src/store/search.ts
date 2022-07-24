@@ -10,15 +10,14 @@ const codes = c as { [key: string]: string };
 export const useSearch = defineStore('search', {
   // initiate default state
   state: () => {
-    const rawStudentData: string[][] =
-      JSON.parse(localStorage.getItem('geprek-data') as string) || studentData;
-    const chips: string[] = JSON.parse(localStorage.getItem('geprek-chips') as string) || [];
-    const query: string = (localStorage.getItem('geprek-query') as string) || '';
+    const rawStudentData = useStorage('geprek-data', studentData);
+    const chips = useStorage('geprek-chips', [] as string[]);
+    const query = useStorage('geprek-query', '');
 
     return {
       query,
-      chips: chips || ([] as string[]),
-      students: rawStudentData.map((s) => ({
+      chips: chips,
+      students: rawStudentData.value.map((s) => ({
         name: s[0],
         tpbID: s[1],
         majorID: s[2],
@@ -45,34 +44,61 @@ export const useSearch = defineStore('search', {
     resetResult() {
       this.result = [] as [Student, number][];
     },
-    getResult() {
-      //load settings
-      const settings = useSettings();
+    getTokens() {
+      const result: { alphabetic: string[]; numeric: string[]; prefixes: string[] } = {
+        alphabetic: [],
+        numeric: [],
+        prefixes: [],
+      };
+
+      // get prefixes
+      // will match for prefixes found in query, e.g:
+      // "if18", "if2018", "if 18", "if 2018"
+      const prefixRegex = /([A-z]{2,})\s?(20)?([0-9]{2})\b/g;
+
+      let matches = prefixRegex.exec(this.query);
+      const occurences: [number, number][] = [];
+
+      while (matches != null) {
+        const [full, code, year, yearSuffix] = matches;
+        const index = matches.index;
+        const length = full.length;
+
+        const prefix: string | undefined = codes[code.toLowerCase()];
+
+        // if code exists, insert as prefix
+        if (prefix) {
+          if (yearSuffix) result.prefixes.push(prefix + yearSuffix);
+          else result.prefixes.push(prefix + year);
+        }
+
+        // re-search for matches
+        matches = prefixRegex.exec(this.query);
+      }
+
+      let cleanQuery = this.query;
+      while (occurences.length != 0) {
+        const [index, length] = occurences.pop()!;
+        cleanQuery = cleanQuery.slice(0, index) + cleanQuery.slice(index + length);
+      }
+      cleanQuery = cleanQuery.replace(/  +/g, ' ');
 
       // parse query
-      const tokenized = this.query.split(' ');
-      const alphabetic: string[] = [];
-      const numeric: string[] = [];
-      const prefixes: string[] = [];
-
-      // regex prefix
-      const prefixRegex = /([A-z]{2,})([0-9]{2}([0-9]{2})?)/;
+      const tokenized = cleanQuery.split(' ');
 
       // parse query to different types
       for (let t of tokenized) {
         if (t.length < 1) continue;
         t = t.toLowerCase();
 
-        if (isNumber(t)) numeric.push(t);
-        else if (hasNumber(t) && prefixRegex.test(t)) {
-          const [_, code, year] = t.match(prefixRegex)!;
-          const prefix: string | undefined = codes[code.toUpperCase()];
-          if (prefix) {
-            if (year.length == 4) prefixes.push(prefix + year.slice(2, 4));
-            else prefixes.push(prefix + year);
-          }
-        } else alphabetic.push(t);
+        if (isNumber(t)) result.numeric.push(t);
+        else result.alphabetic.push(t);
       }
+      return result;
+    },
+    getResult() {
+      const { alphabetic, numeric, prefixes } = this.getTokens();
+      const settings = useSettings();
 
       // only sort containing results
       const filtered = this.students
@@ -144,7 +170,6 @@ export const useSearch = defineStore('search', {
         return 0;
       });
 
-      console.log(result);
       this.result = result;
     },
   },

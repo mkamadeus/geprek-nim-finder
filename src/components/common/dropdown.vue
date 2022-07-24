@@ -1,6 +1,7 @@
 <script setup lang="ts">
 type Props = {
   options: any[];
+  values: any[];
   modelValue: any;
 };
 
@@ -8,17 +9,14 @@ const props = defineProps<Props>();
 const emits = defineEmits(['update:modelValue']);
 
 const open = ref(false);
-
-const set = (val: any) => {
-  emits('update:modelValue', val);
-};
+const selectedIndex = computed(() => props.values.findIndex((val) => props.modelValue === val));
 </script>
 
 <template>
   <div relative tabindex="0" @blur="open = false">
     <div
-      p="2 r-4"
-      w-20
+      p="2 r-8"
+      w-full
       type="text"
       cursor-pointer
       transition-all
@@ -27,7 +25,7 @@ const set = (val: any) => {
       @click="open = !open"
       :class="open ? 'rounded-t' : 'rounded'"
     >
-      {{ modelValue }}
+      {{ props.options[selectedIndex] }}
     </div>
     <i-carbon-caret-up
       absolute
@@ -43,7 +41,7 @@ const set = (val: any) => {
     <div
       v-if="open"
       flex="~ col"
-      w-20
+      w-full
       bg="dark:gray-600 gray-200"
       p-1
       absolute
@@ -51,7 +49,7 @@ const set = (val: any) => {
       :class="open ? 'rounded-b' : 'rounded'"
     >
       <div
-        v-for="(v, i) in options"
+        v-for="(v, i) in values"
         :key="i"
         cursor-pointer
         bg="hover:gray-500"
@@ -62,7 +60,7 @@ const set = (val: any) => {
           $emit('update:modelValue', v);
         "
       >
-        {{ v }}
+        {{ options[i] }}
       </div>
     </div>
   </div>

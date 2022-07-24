@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import geprek from '~/constants/geprek';
+import NavigationHeader from '~/components/page/common/navigation-header.vue';
 
 // randomize geprek
 const geprekIndex = Math.floor(Math.random() * geprek.length);
@@ -7,23 +8,10 @@ const geprekIndex = Math.floor(Math.random() * geprek.length);
 
 <template>
   <!-- HEADER -->
-  <header pb-3>
-    <div
-      flex="~ col sm:row"
-      justify-between
-      items="start sm:center"
-      space-y-2
-      text="teal-500 dark:teal-300"
-    >
-      <div flex="~ col" justify="items-center">
-        <h1 flex="~" font="semibold" text="xl center" items-center space-x-3>
-          Geprek ITB NIM Finder
-        </h1>
-        <p text="xs md:sm gray-400 dark:white" italic>Digeprek oleh {{ geprek[geprekIndex] }}.</p>
-      </div>
-      <NavigationBar />
-    </div>
-  </header>
+  <NavigationHeader
+    title="Geprek ITB NIM Finder"
+    :subtitle="`Digeprek oleh ${geprek[geprekIndex]}.`"
+  />
   <!-- MAIN -->
   <main flex="~ col" justify-center>
     <SearchBar />

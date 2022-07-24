@@ -1,25 +1,13 @@
 import { defineStore } from 'pinia';
-
-export enum MajorModeEnum {
-  LONG,
-  SHORT,
-  BOTH,
-}
+import { MajorMode } from '~/models/MajorMode';
 
 export const useSettings = defineStore('settings', {
   state: () => {
     return {
-      onlineMode: false,
-      yearLimit: 2016,
-      majorMode: MajorModeEnum.LONG,
+      onlineMode: useStorage('geprek-online-mode', false),
+      yearLimit: useStorage('geprek-year-limit', 2016),
+      majorMode: useStorage('geprek-major-mode', MajorMode.LONG),
+      showYear: useStorage('geprek-show-year', false),
     };
-  },
-  actions: {
-    setMajorMode(mode: MajorModeEnum) {
-      this.majorMode = mode;
-    },
-    setYearLimit(limit: number) {
-      this.yearLimit = limit;
-    },
   },
 });

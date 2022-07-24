@@ -2,8 +2,6 @@
 import { useSearch } from '~/store/search';
 
 const store = useSearch();
-const cachedQuery = useStorage('geprek-query', '');
-const cachedChips = useStorage('geprek-chips', [] as string[]);
 
 // debounce query
 const getQueryResult = useDebounceFn(() => {
@@ -13,12 +11,6 @@ const getQueryResult = useDebounceFn(() => {
     store.resetResult();
   }
 }, 500);
-
-watchEffect(() => {
-  cachedQuery.value = store.query;
-  cachedChips.value = store.chips;
-  console.log(store.query);
-});
 </script>
 
 <template>
@@ -38,7 +30,10 @@ watchEffect(() => {
       placeholder="Ketik nama, NIM, atau kode jurusan..."
       role="textbox"
       autofocus
-      @input="getQueryResult"
+      @input="
+        store.getChips();
+        getQueryResult();
+      "
     />
     <!-- CHIPS -->
     <div flex space-x-2>
@@ -49,7 +44,7 @@ watchEffect(() => {
         items-center
         justify-center
         p="x-1.5 y-0.5"
-        text="sm"
+        text="xs lg:sm"
         rounded-full
         cursor-pointer
         bg="teal-400"
