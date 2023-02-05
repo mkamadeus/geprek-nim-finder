@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSearch } from '~/store/search';
+import { useSearch } from '~/stores/search';
 
 type Props = {
   name: string;
@@ -18,6 +18,8 @@ const redirectToNIM = (nim: string) => {
 </script>
 
 <template>
-  <span>@</span>
-  <span underline="~ dotted" cursor-pointer @click="redirectToNIM(nim)">{{ name }}</span>
+  <span font-mono>
+    <span>@</span>
+    <span underline="~ dotted" cursor-pointer @click="redirectToNIM(nim)">{{ name }}</span>
+  </span>
 </template>

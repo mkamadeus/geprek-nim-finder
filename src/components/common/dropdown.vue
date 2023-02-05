@@ -13,7 +13,7 @@ const selectedIndex = computed(() => props.values.findIndex((val) => props.model
 </script>
 
 <template>
-  <div relative tabindex="0" @blur="open = false">
+  <div relative tabindex="0" @blur="open = false" min-w="24">
     <div
       p="2 r-8"
       w-full

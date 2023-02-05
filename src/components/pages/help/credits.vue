@@ -10,6 +10,7 @@ const SUPPORTERS = [
   ['soikon', '18217006', 'domain, implementasi teknis, versioning, dll.'],
   ['graciellavl', '18219075', 'ide fitur, review UI/UX, dll.'],
   ['stefanuslamlo', '13519101', 'ide fitur'],
+  ['ilovenoodles', '13519101', 'ide fitur'],
 ];
 </script>
 

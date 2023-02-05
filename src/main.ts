@@ -1,3 +1,6 @@
+// SSG
+import { ViteSSG } from 'vite-ssg';
+
 // CSS
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
@@ -8,21 +11,25 @@ import { setupLayouts } from 'virtual:generated-layouts';
 import generatedRoutes from 'virtual:generated-pages';
 const routes = setupLayouts(generatedRoutes);
 
-// ROUTER
-import { createRouter, createWebHistory } from 'vue-router';
-
-const router = createRouter({ routes, history: createWebHistory() });
-
 // STORE
 import { createPinia } from 'pinia';
-const store = createPinia();
+import { useSearch } from './stores/search';
+import { useSettings } from './stores/settings';
 
 // MAIN APP
-import { createApp } from 'vue';
 import App from './App.vue';
+import { AppModule } from './modules/module';
 
-const app = createApp(App);
-
-app.use(router);
-app.use(store);
-app.mount('#geprek');
+export const createApp = ViteSSG(
+  App,
+  {
+    routes,
+  },
+  (ctx) => {
+    Object.values(
+      import.meta.glob<{ install: AppModule }>('./modules/*.ts', { eager: true }),
+    ).forEach((x) => {
+      x.install?.(ctx);
+    });
+  },
+);

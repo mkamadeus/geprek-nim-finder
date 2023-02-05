@@ -1,0 +1,100 @@
+home:
+  title: Geprek ITB NIM Finder
+  subtitlePrefix: Geprek-ed by
+  prompt: Type in name, NIM, or major code...
+  search:
+    default: Search results will be shown here.
+    incomplete: Incomplete results?
+    reset: Reset cache.
+    empty: Not finding anything. Maybe geprek-ed wrong.
+    result:
+      showing: Showing
+      of: out of
+      result: results
+help:
+  title: Help
+  subtitle: For those of you who loves geprek.
+settings:
+  title: Settings
+  subtitle: What level you want your geprek?
+  limit:
+    title: Year limit
+    subtitle: Limit the search results from a certain year.
+  display:
+    title: Major/faculty display
+    subtitle: Set major and faculty display name.
+  yearDisplay:
+    title: Show year
+    subtitle: Show year in major and faculty display name.
+  sbmYear:
+    title: SBM Graduation year
+    subtitle: Use SBM graduation year for display and search.
+  language:
+    title: Language
+    subtitle: Select your language preference.
+majors:
+  101: Mathematics
+  102: Physics
+  103: Astronomy
+  104: Microbiology
+  105: Chemistry
+  106: Biology
+  107: Pharmaceutical Science and Technology
+  108: Actuarial
+  109: Oceanographic Engineering
+  112: Bioengineering
+  114: Agricultural Engineering
+  115: Forestry Engineering
+  116: Clinical and Community Pharmacy
+  119: Post-Harvest Technology
+  120: Geological Engineering
+  121: Mining Engineering
+  122: Petroleum Engineering
+  123: Geophysical Engineering
+  125: Metallurgical Engineering
+  128: Meteorology
+  129: Oceanography
+  130: Chemical Engineering
+  131: Mechanical Engineering
+  132: Electrical Engineering
+  133: Physical Engineering
+  134: Industrial Engineering
+  135: Informatics Engineering
+  136: Aeronautics and Astronautics
+  137: Materials Engineering
+  143: Food Engineering
+  144: Industrial Engineering Management
+  145: Bioenergy and Chemurgy Engineering
+  150: Civil Engineering
+  151: Geodesy and Geomatics Engineering
+  152: Architecture
+  153: Environmental Engineering
+  154: Urban and Regional Planning
+  155: Marine Engineering
+  157: Environmental Infrastructure Engineering
+  158: Water Resources Engineering and Management
+  160: Faculty of Mathematics and Natural Sciences
+  161: School of Life Science Technology - Science
+  162: School of Pharmacy
+  163: Faculty of Earth Science and Technology
+  164: Faculty of Mining and Petroleum Engineering
+  165: School of Electrical Engineering and Informatics
+  166: School of Civil and Environmental Engineering
+  167: School of Industrial Engineering
+  168: Faculty of Fine Arts and Design
+  169: Faculty of Mechanical and Aerospace Engineering
+  170: Fine Arts
+  171: Design
+  172: Craft
+  173: Interior Design
+  174: Visual Communication Design
+  175: Product Design
+  180: Electrical Power Engineering
+  181: Telecommunication Engineering
+  182: Technology and Information Systems
+  183: Biomedical Engineering
+  190: Management
+  192: Entrepreneurship
+  197: School of Business and Management
+  198: School of Engineering Life Sciences
+  199: School of Architecture, Planning and Policy Development

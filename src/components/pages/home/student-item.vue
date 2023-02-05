@@ -2,12 +2,13 @@
 import type { Student } from '~/models/Student';
 import m from '~/json/majors.json';
 import c from '~/json/codes.json';
-import { useSettings } from '~/store/settings';
+import { useSettings } from '~/stores/settings';
 import { MajorMode } from '~/models/MajorMode';
 
 // props
 type Props = {
   student: Student;
+  isSpecial: boolean;
 };
 
 const props = defineProps<Props>();
@@ -19,12 +20,15 @@ for (const [k, v] of Object.entries(c)) {
   codes[v] = k;
 }
 
-const { majorMode: mode, showYear } = useSettings();
+const { majorMode: mode, showYear, useSBMYear } = useSettings();
 
 const getMajorName = () => {
   const prefix = props.student.majorID?.slice(0, 3) ?? props.student.tpbID.slice(0, 3);
-  const year = 2000 + parseInt(props.student.tpbID.slice(3, 5));
-  const major = majors[prefix];
+  const year =
+    2000 +
+    parseInt(props.student.tpbID.slice(3, 5)) + // got from NIM
+    (useSBMYear && ['190', '192', '197'].includes(prefix) ? 3 : 0); // add 3 years if student is under SBM
+  const major = t(`majors[${prefix}]`);
   const shortened = codes[prefix];
 
   let result: string;
@@ -45,21 +49,29 @@ const getMajorName = () => {
 
   return result;
 };
+
+const clipboard = useClipboard();
+const { t } = useI18n();
 </script>
 
 <template>
-  <div flex justify-between items-center space-x-2 py-2>
+  <li flex justify-between items-center space-x-2 py-2>
     <div>
       <div
         text="sm md:base dark:gray-200"
+        font-700
+        inline-flex
+        items-center
+        space-x-2
         font-medium
         cursor-pointer
         hover:animate-pulse
         title="Click to copy!"
       >
-        {{ student.name }}
+        <span>{{ student.name }}</span>
+        <span v-if="isSpecial" text="xs teal-500 dark:teal-300"><i-carbon-star /></span>
       </div>
-      <div text="xs md:sm dark:gray-300" italic select-none>
+      <div text="xs md:sm dark:gray-300" font-300 italic select-none>
         {{ getMajorName() }}
       </div>
     </div>
@@ -71,6 +83,7 @@ const getMajorName = () => {
         cursor-pointer
         hover:animate-pulse
         title="Click to copy!"
+        @click="clipboard.copy(student.majorID || '')"
       >
         {{ student.majorID }}
       </div>
@@ -80,9 +93,10 @@ const getMajorName = () => {
         cursor-pointer
         hover:animate-pulse
         title="Click to copy!"
+        @click="clipboard.copy(student.tpbID)"
       >
         {{ student.tpbID }}
       </div>
     </div>
-  </div>
+  </li>
 </template>

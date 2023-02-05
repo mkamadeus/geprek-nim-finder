@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSearch } from '~/store/search';
+import { useSearch } from '~/stores/search';
 
 const store = useSearch();
 
@@ -11,6 +11,8 @@ const getQueryResult = useDebounceFn(() => {
     store.resetResult();
   }
 }, 500);
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -27,19 +29,22 @@ const getQueryResult = useDebounceFn(() => {
       bg-transparent
       text="dark:white"
       transition="~ duration-150"
-      placeholder="Ketik nama, NIM, atau kode jurusan..."
+      :placeholder="t('home.prompt')"
       role="textbox"
       autofocus
       @input="
-        store.getChips();
+        store.parseChips();
         getQueryResult();
       "
     />
     <!-- CHIPS -->
-    <div flex space-x-2>
+    <TransitionGroup name="list" tag="div" flex space-x-2>
       <button
         v-for="(chip, i) in store.chips"
-        @click="store.removeChip(i)"
+        @click="
+          store.removeChip(i);
+          store.getResult();
+        "
         inline-flex
         items-center
         justify-center
@@ -54,6 +59,6 @@ const getQueryResult = useDebounceFn(() => {
           <i-carbon-close />
         </span>
       </button>
-    </div>
+    </TransitionGroup>
   </form>
 </template>
