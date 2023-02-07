@@ -29,7 +29,7 @@ const getMajorName = () => {
     parseInt(props.student.tpbID.slice(3, 5)) + // got from NIM
     (useSBMYear && ['190', '192', '197'].includes(prefix) ? 3 : 0); // add 3 years if student is under SBM
   const major = t(`majors[${prefix}]`);
-  const shortened = codes[prefix];
+  const shortened = t(`codes[${prefix}]`);
 
   let result: string;
   switch (mode) {

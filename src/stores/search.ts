@@ -12,7 +12,7 @@ export const useSearch = defineStore('search', {
     const rawStudentData = useStorage('geprek-data', studentData);
     const chips = useStorage('geprek-chips', [] as string[]);
     const query = useStorage('geprek-query', '');
-    const version = useStorage('geprek=version', '3.0.0');
+    const version = useStorage('geprek=version', '3.0.0-rc');
     const limit = ref(10);
     const result = reactive<[Student, number][]>([]);
 
@@ -89,7 +89,7 @@ export const useSearch = defineStore('search', {
           // handle SBM year
           if (settings.useSBMYear) {
             const offset = ['190', '192', '197'].includes(prefix) ? 3 : 0;
-            result.prefixes.push(prefix + (parseInt(yearSuffix) - 3).toString());
+            result.prefixes.push(prefix + (parseInt(yearSuffix) - offset).toString());
           } else {
             result.prefixes.push(prefix + yearSuffix);
           }

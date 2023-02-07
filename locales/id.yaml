@@ -41,7 +41,6 @@ majors:
   106: Biologi
   107: Sains dan Teknologi Farmasi
   108: Aktuaria
-  109: Teknik Oseanografi
   112: Rekayasa Hayati
   114: Rekayasa Pertanian
   115: Rekayasa Kehutanan
@@ -96,5 +95,70 @@ majors:
   190: Manajemen
   192: Kewirausahaan
   197: Sekolah Bisnis dan Manajemen
-  198: Sekolah Ilmu Teknologi Hayati  Rekayasa
+  198: Sekolah Ilmu Teknologi Hayati - Rekayasa
   199: Sekolah Arsitektur, Perencanaan dan Pengembangan Kebijakan
+codes:
+  101: MA
+  102: FI
+  103: AS
+  104: BM
+  105: KI
+  106: BI
+  107: STF
+  108: AK
+  112: BE
+  114: BA
+  115: BW
+  116: FKK
+  119: BP
+  120: GL
+  121: TA
+  122: TM
+  123: TG
+  125: MG
+  128: ME
+  129: OS
+  130: TK
+  131: MS
+  132: EL
+  133: TF
+  134: TI
+  135: IF
+  136: AE
+  137: MT
+  143: PG
+  144: MRI
+  145: TB
+  150: SI
+  151: GD
+  152: AR
+  153: TL
+  154: PWK
+  155: KL
+  157: RIL
+  158: TPSDA
+  160: FMIPA
+  161: SITH-S
+  162: SF
+  163: FITB
+  164: FTTM
+  165: STEI
+  166: FTSL
+  167: FTI
+  168: FSRD
+  169: FTMD
+  170: SR
+  171: DS
+  172: KR
+  173: DI
+  174: DKV
+  175: DP
+  180: EP
+  181: ET
+  182: STI
+  183: EB
+  190: MB
+  192: MK
+  197: SBM
+  198: SITH-R
+  199: SAPPK

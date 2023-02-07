@@ -6,10 +6,11 @@ type Props = {
 };
 const { frontmatter } = defineProps<Props>();
 
+const { t } = useI18n();
+
 // randomize geprek
 const geprekIndex = Math.floor(Math.random() * geprek.length);
 const { path } = useRoute();
-const { t } = useI18n();
 </script>
 
 <template>
