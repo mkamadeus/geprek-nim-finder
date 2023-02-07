@@ -1,8 +1,9 @@
 {
 	"name": "geprek-nim-finder",
+	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vue-tsc --noEmit && vite-ssg build",
+		"build": "vite-ssg build",
 		"preview": "vite preview"
 	},
 	"dependencies": {

@@ -81,4 +81,7 @@ export default defineConfig({
       },
     },
   },
+  ssr: {
+    noExternal: ['workbox-window', /vue-i18n/],
+  },
 });
