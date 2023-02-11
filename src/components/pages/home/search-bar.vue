@@ -10,13 +10,14 @@ const getQueryResult = useDebounceFn(() => {
   } else {
     store.resetResult();
   }
+  store.isLoading = false;
 }, 500);
 
 const { t } = useI18n();
 </script>
 
 <template>
-  <form flex="~ col" space-y-2 mb-1 w-full @submit.prevent="">
+  <form flex="~ col" space-y-2 mb-2 w-full @submit.prevent="">
     <input
       v-model="store.query"
       rounded-full
@@ -33,6 +34,7 @@ const { t } = useI18n();
       role="textbox"
       autofocus
       @input="
+        store.isLoading = true;
         store.parseChips();
         getQueryResult();
       "

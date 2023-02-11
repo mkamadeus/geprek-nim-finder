@@ -11,6 +11,7 @@ home:
       showing: Menunjukkan
       of: dari
       result: hasil
+    loading: Memuat...
 help:
   title: Bantuan
   subtitle: Bagi kalian yang suka ayam geprek.
@@ -77,7 +78,7 @@ majors:
   '162': Sekolah Farmasi
   '163': Fakultas Ilmu dan Teknologi Kebumian
   '164': Fakultas Teknik Pertambangan dan Perminyakan
-  '165': Sekolah Teknik Elektro dan Informatika
+  '165': Sekolah Teknik Elektro dan Informatika - Rekayasa
   '166': Fakultas Teknik Sipil dan Lingkungan
   '167': Fakultas Teknik Industri
   '168': Fakultas Seni Rupa dan Desain
@@ -94,9 +95,12 @@ majors:
   '183': Teknik Biomedis
   '190': Manajemen
   '192': Kewirausahaan
+  '196': Sekolah Teknik Elektro dan Informatika - Komputasi
   '197': Sekolah Bisnis dan Manajemen
   '198': Sekolah Ilmu Teknologi Hayati - Rekayasa
   '199': Sekolah Arsitektur, Perencanaan dan Pengembangan Kebijakan
+alternativeMajors:
+  '165': Sekolah Teknik Elektro dan Informatika
 codes:
   '101': MA
   '102': FI

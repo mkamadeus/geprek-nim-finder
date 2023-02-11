@@ -8,7 +8,7 @@ defineProps<Props>();
 </script>
 
 <template>
-  <header pb-3 w-full class="not-prose">
+  <header mb-5 w-full class="not-prose">
     <div flex="~ col lg:row" justify-between items="center lg:end" space-y-2>
       <div flex="~ col" items="center lg:start">
         <h1 flex="~" font="semibold" text="xl center teal-500 dark:teal-300" items-center space-x-3>

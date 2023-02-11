@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     ICarbonMoon: typeof import('~icons/carbon/moon')['default']
     ICarbonSettings: typeof import('~icons/carbon/settings')['default']
     ICarbonStar: typeof import('~icons/carbon/star')['default']
+    ICarbonStarFilled: typeof import('~icons/carbon/star-filled')['default']
     ICarbonSun: typeof import('~icons/carbon/sun')['default']
     Markdown: typeof import('./src/components/common/markdown.vue')['default']
     NavigationBar: typeof import('./src/components/common/navigation-bar.vue')['default']

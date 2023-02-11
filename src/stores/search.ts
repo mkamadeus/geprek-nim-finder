@@ -12,15 +12,17 @@ export const useSearch = defineStore('search', {
     const rawStudentData = useStorage('geprek-data', studentData);
     const chips = useStorage('geprek-chips', [] as string[]);
     const query = useStorage('geprek-query', '');
-    const version = useStorage('geprek=version', '3.0.0-rc');
+    const version = useStorage('geprek-version', '3.0.0-rc');
     const limit = ref(10);
     const result = reactive<[Student, number][]>([]);
+    const isLoading = ref(false);
 
     return {
       query,
       version,
       chips,
       limit,
+      isLoading,
       students: rawStudentData.value.map((s) => ({
         name: s[0],
         tpbID: s[1],
@@ -78,7 +80,6 @@ export const useSearch = defineStore('search', {
 
       while (matches != null) {
         const [full, code, year, yearSuffix] = matches;
-        console.log(full, code, year, yearSuffix);
         const index = matches.index;
         const length = full.length;
 
@@ -112,7 +113,9 @@ export const useSearch = defineStore('search', {
           cleanQuery.slice(0, index + offset) + cleanQuery.slice(index + length + offset);
         offset += length;
       }
-      cleanQuery = cleanQuery.replace(/  +/g, ' ').trim();
+      cleanQuery = cleanQuery.replace(/ +/g, ' ').trim();
+
+      console.log(cleanQuery);
 
       // parse query
       const tokenized = cleanQuery.split(' ');
@@ -126,6 +129,7 @@ export const useSearch = defineStore('search', {
         else result.alphabetic.push(t);
       }
 
+      console.log(result);
       return result;
     },
     /*

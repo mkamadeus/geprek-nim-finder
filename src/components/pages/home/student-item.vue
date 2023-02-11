@@ -55,7 +55,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <li flex justify-between items-center space-x-2 py-2>
+  <li flex justify-between items-center space-x-2 pb-4>
     <div>
       <div
         text="sm md:base dark:gray-200"
@@ -68,8 +68,14 @@ const { t } = useI18n();
         hover:animate-pulse
         title="Click to copy!"
       >
-        <span>{{ student.name }}</span>
-        <span v-if="isSpecial" text="xs teal-500 dark:teal-300"><i-carbon-star /></span>
+        <span
+          :class="{ 'dark:text-yellow-200 text-yellow-500': isSpecial }"
+          @click="clipboard.copy(student.name || '')"
+          >{{ student.name }}</span
+        >
+        <span v-if="isSpecial" text="xs teal-500 dark:teal-300" @click="$router.push('/help')"
+          ><i-carbon-star-filled
+        /></span>
       </div>
       <div text="xs md:sm dark:gray-300" font-300 italic select-none>
         {{ getMajorName() }}
@@ -100,3 +106,12 @@ const { t } = useI18n();
     </div>
   </li>
 </template>
+
+<style scoped>
+.golden {
+  background: linear-gradient(45deg, #c1af8b 22%, #ffeaad 40%, #b5a584 78%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+</style>

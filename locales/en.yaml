@@ -11,6 +11,7 @@ home:
       showing: Showing
       of: out of
       result: results
+    loading: Loading...
 help:
   title: Help
   subtitle: For those of you who loves geprek.
