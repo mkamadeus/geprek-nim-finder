@@ -19,7 +19,7 @@ export const useSearch = () => {
 
   const verifyStudentData = useCallback(async () => {
     let version = window.localStorage.getItem('version');
-    let lastVersion = 'data_13_21.json';
+    let lastVersion = 'data_13_22.json';
 
     // If current version is different than latest version,
     // Remove cache
