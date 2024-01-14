@@ -3,5 +3,7 @@ console.log('🍗 🔥 Ready to geprek!');
 </script>
 
 <template>
-  <router-view />
+  <NuxtLayout bg="white dark:gray-900" font="sans">
+    <NuxtPage />
+  </NuxtLayout>
 </template>

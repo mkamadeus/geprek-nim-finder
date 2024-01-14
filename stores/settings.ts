@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { MajorMode } from '~/models/MajorMode';
+import { useStorage } from '@vueuse/core'
 
 export const useSettings = defineStore('settings', {
   state: () => {

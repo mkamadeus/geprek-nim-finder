@@ -1,13 +1,26 @@
 {
 	"name": "geprek-nim-finder",
-	"type": "module",
+	"private": true,
+	"packageManager": "pnpm@8.3.1",
 	"scripts": {
-		"dev": "vite",
-		"build": "vite-ssg build",
-		"preview": "vite preview"
+		"dev": "nuxt dev",
+		"build": "nuxt build",
+		"generate": "nuxt generate",
+		"postinstall": "nuxt prepare",
+		"preview": "nuxt preview"
 	},
 	"dependencies": {
-		"vue": "^3.2.45",
+		"@nuxt/image": "^1.2.0",
+		"@nuxtjs/eslint-module": "^4.1.0",
+		"@nuxtjs/i18n": "^8.0.0",
+		"@pinia/nuxt": "^0.5.1",
+		"@total-typescript/ts-reset": "^0.5.1",
+		"@unocss/eslint-config": "^0.58.3",
+		"@unocss/nuxt": "^0.58.3",
+		"@vite-pwa/nuxt": "^0.4.0",
+		"@vueuse/nuxt": "^10.7.1",
+		"nuxt": "^3.9.1",
+		"vue": "^3.4.11",
 		"vue-router": "^4.1.6"
 	},
 	"devDependencies": {
@@ -35,7 +48,6 @@
 		"vite-plugin-vue-layouts": "^0.7.0",
 		"vite-plugin-vue-markdown": "^0.22.1",
 		"vite-ssg": "^0.22.1",
-		"vue-i18n": "^9.2.2",
 		"vue-tsc": "^0.38.9"
 	}
 }

@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { useSearch } from '~/stores/search';
+// import { useSearch } from '~/stores/search';
 
-const { t } = useI18n();
-const search = useSearch();
+// const { t } = useI18n();
+// const search = useSearch();
 
-// status
-const isIdle = computed(
-  () => !search.isLoading && search.result.length === 0 && search.query.length <= 2,
-);
-const isLoading = computed(() => search.isLoading);
-const isShowing = computed(
-  () => !search.isLoading && search.result.length !== 0 && search.query.length > 2,
-);
-const isNone = computed(
-  () => !search.isLoading && search.result.length === 0 && search.query.length > 2,
-);
+// // status
+// const isIdle = computed(
+//   () => !search.isLoading && search.result.length === 0 && search.query.length <= 2,
+// );
+// const isLoading = computed(() => search.isLoading);
+// const isShowing = computed(
+//   () => !search.isLoading && search.result.length !== 0 && search.query.length > 2,
+// );
+// const isNone = computed(
+//   () => !search.isLoading && search.result.length === 0 && search.query.length > 2,
+// );
 </script>
 
 <template>
@@ -36,25 +36,9 @@ const isNone = computed(
       {{ t('home.search.result.result') }}.
     </div>
     <!-- WHEN NO RESULT -->
-    <div
-      v-if="isNone"
-      text="center gray-400/70 xs"
-      flex="~ col"
-      justify-center
-      items-center
-      space-y-2
-      italic
-    >
+    <div v-if="isNone" text="center gray-400/70 xs" flex="~ col" justify-center items-center space-y-2 italic>
       <div>{{ t('home.search.empty') }}</div>
-      <img
-        src="/svg/chicken.svg"
-        alt="geprek-icon"
-        w="10"
-        h="10"
-        filter="~ grayscale-100"
-        opacity-20
-        text-center
-      />
+      <img src="/svg/chicken.svg" alt="geprek-icon" w="10" h="10" filter="~ grayscale-100" opacity-20 text-center />
     </div>
     <!-- WHEN LOADING -->
     <div v-if="isLoading" text="center gray-400/70 xs" italic>

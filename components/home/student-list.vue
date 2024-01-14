@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { useSearch } from '~/stores/search';
+// const store = useSearch();
 
-const store = useSearch();
-
-const SPECIALS = ['13518035', '13516030', '18217006', '18219075', '13519101', '13520029'];
+// const SPECIALS = ['13518035', '13516030', '18217006', '18219075', '13519101', '13520029'];
 
 // get result on mount
-onMounted(() => {
-  if (store.query.length >= 2) {
-    store.getResult();
-  }
-});
+// onMounted(() => {
+//   if (store.query.length >= 2) {
+//     store.getResult();
+//   }
+// });
 
 // reset cache/localstorage
-const { t } = useI18n();
+// const { t } = useI18n();
 </script>
 
 <template>
@@ -24,18 +22,8 @@ const { t } = useI18n();
       </template>
     </TransitionGroup>
     <div flex="~" justify-center mt-2 mx-auto w-full v-if="store.limit < store.result.length">
-      <a
-        bg="teal-400 dark:gray-700/70"
-        p="x-4 y-2"
-        cursor="pointer"
-        select-none
-        text-white
-        text-center
-        text-sm
-        rounded
-        @click="store.increaseLimit(5)"
-        >Geprek lagi!</a
-      >
+      <a bg="teal-400 dark:gray-700/70" p="x-4 y-2" cursor="pointer" select-none text-white text-center text-sm rounded
+        @click="store.increaseLimit(5)">Geprek lagi!</a>
     </div>
   </div>
 </template>
