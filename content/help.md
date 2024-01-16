@@ -17,7 +17,19 @@ inspirations:
 Sebelumnya, salam geprek 🍗 🔥!
 
 Geprek NIM Finder ITB dibuat oleh :handle{name="mkamadeus" nim="13518035"}.
-Terinspirasi dari beberapa NIM Finder lain yang dibuat oleh beberapa pengembang lainnya: <template v-for="{alias, nim} in frontmatter.inspirations"><Handle :name="alias" :nim="nim" />&nbsp;</template>
+Terinspirasi dari beberapa NIM Finder lain yang dibuat oleh beberapa pengembang lainnya:
+
+::inspirations
+---
+inspirations:
+- alias: yonasadiel
+  nim: "13516030"
+- alias: ashura
+  nim: "13517099"
+- alias: jonesnapoleon
+  nim: "13518086"
+---
+::
 
 Geprek NIM Finder dibangun melalui bantuan dan masukan dari beberapa pihak, baik dalam implementasi maupun ide-ide fitur yang ada untuk NIM Finder ini.
 Terima kasih kepada nama-nama berikut:

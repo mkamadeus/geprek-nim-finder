@@ -62,6 +62,11 @@ export default defineNuxtConfig({
   // pinia: {
   //   storesDirs: ['./stores/**'],
   // },
+  content: {
+    markdown: {
+      anchorLinks: false
+    }
+  },
   nitro: {
     storage: {
       cache: {

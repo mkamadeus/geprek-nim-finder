@@ -6,7 +6,14 @@ export default defineConfig({
     presetAttributify(),
     presetUno(),
     presetIcons(),
-    presetTypography(),
+    presetTypography({
+      cssExtend: {
+        'h1, h2, h3, h4, h5, h6': {
+          'text-decoration': 'none',
+          'font-weight': '600'
+        }
+      }
+    }),
     presetWebFonts({
       fonts: {
         header: [
