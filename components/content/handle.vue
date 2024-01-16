@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useSearch } from '~/stores/search'
-
 type Props = {
   name: string;
   nim: string;

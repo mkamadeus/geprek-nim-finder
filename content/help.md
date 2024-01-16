@@ -10,6 +10,21 @@ inspirations:
   nim: "13517099"
 - alias: jonesnapoleon
   nim: "13518086"
+---
+
+### Credits
+
+Sebelumnya, salam geprek 🍗 🔥!
+
+Geprek NIM Finder ITB dibuat oleh :handle{name="mkamadeus" nim="13518035"}.
+Terinspirasi dari beberapa NIM Finder lain yang dibuat oleh beberapa pengembang lainnya: <template v-for="{alias, nim} in frontmatter.inspirations"><Handle :name="alias" :nim="nim" />&nbsp;</template>
+
+Geprek NIM Finder dibangun melalui bantuan dan masukan dari beberapa pihak, baik dalam implementasi maupun ide-ide fitur yang ada untuk NIM Finder ini.
+Terima kasih kepada nama-nama berikut:
+
+
+::supporters
+---
 supporters:
 - alias: yonasadiel
   nim: "13516030"
@@ -27,22 +42,7 @@ supporters:
   nim: "13520029"
   reason: scraping, data cleaning, dll.
 ---
-
-### Credits
-
-Sebelumnya, salam geprek 🍗 🔥!
-
-Geprek NIM Finder ITB dibuat oleh <Handle :name="frontmatter.author.alias" :nim="frontmatter.author.nim" />.
-Terinspirasi dari beberapa NIM Finder lain yang dibuat oleh beberapa pengembang lainnya: <template v-for="{alias, nim} in frontmatter.inspirations"><Handle :name="alias" :nim="nim" />&nbsp;</template>
-
-Geprek NIM Finder dibangun melalui bantuan dan masukan dari beberapa pihak, baik dalam implementasi maupun ide-ide fitur yang ada untuk NIM Finder ini.
-Terima kasih kepada nama-nama berikut:
-
-<ul pl-6 my-1>
-  <li v-for="{alias, nim, reason} in frontmatter.supporters" list-disc my-1>
-    <Handle :name="alias" :nim="nim" /> ({{ reason }})
-  </li>
-</ul>
+::
 
 ---
 

@@ -2,23 +2,24 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/devtools',
     // '@nuxtjs/i18n',
+    '@nuxt/content',
     '@nuxt/image',
     '@pinia/nuxt',
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@vite-pwa/nuxt',
-    '@nuxtjs/eslint-module',
+    '@nuxtjs/eslint-module'
   ],
   css: [
-    '@unocss/reset/tailwind.css',
+    '@unocss/reset/tailwind.css'
   ],
   devServerHandlers: [],
   app: {
     layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
-      title: 'mkamadeus.dev',
+      title: 'geprek.mkamadeus.dev',
       viewport: 'width=device-width,initial-scale=1',
-      link: [{ rel: 'canonical', href: 'https://mkamadeus.dev/' }],
+      link: [{ rel: 'canonical', href: 'https://geprek.mkamadeus.dev/' }],
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -26,7 +27,7 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' },
         { property: 'og:description', content: 'mkamadeus\' personal website.' },
         { property: 'og:title', content: 'mkamadeus.dev' },
-        { property: 'og:url', content: 'https://mkamadeus.dev' },
+        { property: 'og:url', content: 'https://geprek.mkamadeus.dev' },
         { property: 'og:locale', content: 'en_US' }
       ]
     }
@@ -64,11 +65,11 @@ export default defineNuxtConfig({
   nitro: {
     storage: {
       cache: {
-        driver: 'memory',
+        driver: 'memory'
       }
     }
   },
   devtools: {
     enabled: true
-  },
+  }
 })

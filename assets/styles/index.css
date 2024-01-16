@@ -1,21 +1,84 @@
-html {
-  overflow-y: scroll;
+.prose > h1, h2, h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
 }
 
-.list-move, /* apply transition to moving elements */
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
+h1 {
+  margin: 0 0 0.5em;
+  font-weight: 800;
 }
 
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
+h2 {
+  font-weight: 500;
+  font-size: 1.5em;
+  margin: 0 0 0.5em;
 }
 
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
-.list-leave-active {
-  position: absolute;
+h3 {
+  font-weight: 500;
+  font-size: 1.2em;
+  margin: 0 0 0.5em;
+}
+
+.table-of-contents {
+  margin-bottom: 2em;
+  margin-left: -1em;
+}
+
+.table-of-contents ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.table-of-contents a {
+  font-weight: 400;
+  font-size: 0.8em;
+}
+
+p, ul {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.75;
+  font-size: 0.875rem;
+}
+
+blockquote {
+  font-style: normal;
+  color: #bbb;
+  border-left: 0.25em solid #7d7d7d4d;
+}
+
+pre {
+  font-family: 'Ubuntu Mono', monospace;
+  margin: 0;
+  padding: 0;
+  border-radius: 0.5rem;
+}
+
+a {
+  text-decoration-style: dotted;
+  cursor: pointer;
+}
+
+code {
+  font-family: 'Ubuntu Mono', monospace;
+  margin-bottom: 2em;
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+figure > img {
+  margin-bottom: 0.5em;
+}
+
+figcaption {
+  color: #ddd;
+  font-size: 0.8em;
+}
+
+article {
+  font-family: 'Inter';
 }

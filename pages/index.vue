@@ -11,7 +11,6 @@ const { data: student } = await useFetch('/api/search', {
   <main flex="~ col" justify-center class="not-prose">
     <HomeSearchBar />
     <HomeSearchStatus />
-    <!-- <HomeStudentList /> -->
-    {{ student }}
+    <HomeStudentList />
   </main>
 </template>

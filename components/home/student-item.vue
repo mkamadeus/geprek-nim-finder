@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import type { Student } from '~/models/Student';
-import m from '~/json/majors.json';
-import c from '~/json/codes.json';
-import { useSettings } from '~/stores/settings';
-import { MajorMode } from '~/models/MajorMode';
+import { useSettings } from '~/stores/settings'
 
 // props
 type Props = {
@@ -11,73 +7,79 @@ type Props = {
   isSpecial: boolean;
 };
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 
 // remap dicts
-const majors = m as { [k: string]: string };
-const codes: { [k: string]: string } = {};
-for (const [k, v] of Object.entries(c)) {
-  codes[v] = k;
+const majorsResponse = await useFetch<Record<string, string>>('api/list')
+if (!majorsResponse) {
+  throw new Error('Failed to load majors')
 }
+const codesResponse = await useFetch<Record<string, string>>('api/codes')
+if (!codesResponse) {
+  throw new Error('Failed to load codes')
+}
+const majors = majorsResponse.data.value!
+const codes = majorsResponse.data.value!
 
-const { majorMode: mode, showYear, useSBMYear } = useSettings();
+const { showYear, useSBMYear } = useSettings()
 
 const getMajorName = () => {
-  const prefix = props.student.majorID?.slice(0, 3) ?? props.student.tpbID.slice(0, 3);
+  const prefix = props.student.majorID?.slice(0, 3) ?? props.student.tpbID.slice(0, 3)
   const year =
     2000 +
     parseInt(props.student.tpbID.slice(3, 5)) + // got from NIM
-    (useSBMYear && ['190', '192', '197'].includes(prefix) ? 3 : 0); // add 3 years if student is under SBM
-  const major = t(`majors[${prefix}]`);
-  const shortened = t(`codes[${prefix}]`);
+    (useSBMYear && ['190', '192', '197'].includes(prefix) ? 3 : 0) // add 3 years if student is under SBM
+  const major = majors[prefix]
+  const shortened = codes[prefix]
 
-  let result: string;
-  switch (mode) {
-    case MajorMode.LONG:
-      result = `${major}${showYear ? ` ${year}` : ''}`;
-      break;
-    case MajorMode.SHORT:
-      result = `${shortened}${showYear ? `${year}` : ''}`;
-      break;
-    case MajorMode.BOTH:
-      result = `${major} (${shortened}${showYear ? `${year}` : ''})`;
-      break;
-    default:
-      result = `${major}${showYear ? ` ${year}` : ''}`;
-      break;
-  }
+  let result: string
+  // switch (mode) {
+  //   case MajorMode.LONG:
+  //     result = `${major}${showYear ? ` ${year}` : ''}`;
+  //     break;
+  //   case MajorMode.SHORT:
+  //     result = `${shortened}${showYear ? `${year}` : ''}`;
+  //     break;
+  //   case MajorMode.BOTH:
+  //     result = `${major} (${shortened}${showYear ? `${year}` : ''})`;
+  //     break;
+  //   default:
+  //     break;
+  //   }
+  result = `${major}${showYear ? ` ${year}` : ''}`
 
-  return result;
-};
+  return result
+}
 
-const clipboard = useClipboard();
-const { t } = useI18n();
+const clipboard = useClipboard()
+// const { t } = useI18n();
 </script>
 
 <template>
-  <li flex justify-between items-center space-x-2 pb-4>
+  <li flex items-center justify-between pb-4 space-x-2>
     <div>
       <div
         text="sm md:base dark:gray-200"
-        font-700
         inline-flex
-        items-center
-        space-x-2
-        font-medium
         cursor-pointer
+        items-center
+        font-700
+        font-medium
         hover:animate-pulse
+        space-x-2
         title="Click to copy!"
       >
         <span
           :class="{ 'dark:text-yellow-200 text-yellow-500': isSpecial }"
           @click="clipboard.copy(student.name || '')"
-          >{{ student.name }}</span
-        >
-        <span v-if="isSpecial" text="xs teal-500 dark:teal-300" @click="$router.push('/help')"
-          ><i-carbon-star-filled
-        /></span>
+        >{{ student.name }}</span>
+        <span
+          v-if="isSpecial"
+          text="xs teal-500 dark:teal-300"
+          @click="$router.push('/help')"
+        ><i-carbon-star-filled /></span>
       </div>
-      <div text="xs md:sm dark:gray-300" font-300 italic select-none>
+      <div text="xs md:sm dark:gray-300" select-none font-300 italic>
         {{ getMajorName() }}
       </div>
     </div>
@@ -85,8 +87,8 @@ const { t } = useI18n();
       <div
         v-if="student.majorID"
         text="xs md:sm gray-500 dark:gray-300"
-        select-none
         cursor-pointer
+        select-none
         hover:animate-pulse
         title="Click to copy!"
         @click="clipboard.copy(student.majorID || '')"
@@ -95,8 +97,8 @@ const { t } = useI18n();
       </div>
       <div
         text="xs md:sm gray-500 dark:gray-300"
-        select-none
         cursor-pointer
+        select-none
         hover:animate-pulse
         title="Click to copy!"
         @click="clipboard.copy(student.tpbID)"

@@ -7,6 +7,72 @@
 // import { useSettings } from './settings';
 // const codes = c as { [key: string]: string };
 
+export const useSearch = defineStore('search', {
+  state: () => {
+    return {
+      query: useLocalStorage('geprek-query', ''),
+      pagination: {
+        page: 1,
+        showing: 0,
+        total: 0
+      },
+      isTyping: false,
+      isLoading: false,
+      result: [] as Student[]
+    }
+  },
+  actions: {
+    async getResult () {
+      return this.result
+    },
+    async resetResult () {
+      this.result = []
+    },
+    async search () {
+      this.pagination.page = 1
+      this.isLoading = true
+      const paginatedResult = await useFetch<SearchResponseBody>('/api/search', {
+        method: 'POST',
+        body: {
+          query: this.query,
+          page: this.pagination.page
+        }
+      })
+      this.isLoading = false
+
+      if (!paginatedResult.data.value) {
+        console.error('no data returned')
+        return []
+      }
+
+      this.result = paginatedResult.data.value.results
+      this.pagination.showing = Math.min(paginatedResult.data.value.metadata.page * 10, paginatedResult.data.value.metadata.totalResults)
+      this.pagination.total = paginatedResult.data.value.metadata.totalResults
+    },
+    async fetchNextPage () {
+      this.pagination.page += 1
+      this.isLoading = true
+      const paginatedResult = await useFetch<SearchResponseBody>('/api/search', {
+        method: 'POST',
+        body: {
+          query: this.query,
+          page: this.pagination.page
+        }
+      })
+      this.isLoading = false
+
+      if (!paginatedResult.data.value) {
+        console.error('no data returned')
+        return []
+      }
+
+      this.result = [...this.result, ...paginatedResult.data.value.results]
+      this.pagination.showing = Math.min(paginatedResult.data.value.metadata.page * 10, paginatedResult.data.value.metadata.totalResults)
+      this.pagination.total = paginatedResult.data.value.metadata.totalResults
+    }
+  }
+})
+
 // export const useSearch = defineStore('search', {
 //   state: () => {
 //     const rawStudentData = useStorage('geprek-data', studentData);

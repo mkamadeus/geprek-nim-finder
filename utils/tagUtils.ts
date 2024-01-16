@@ -1,1 +1,1 @@
-export const hasTag = (text: string): boolean => text.includes('?');
+export const hasTag = (text: string): boolean => text.includes('?')

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import geprek from '~/constants/geprek';
+import geprek from '~/constants/geprek'
 
 type Props = {
   frontmatter: Record<string, unknown>;
 };
-const { frontmatter } = defineProps<Props>();
+const { frontmatter } = defineProps<Props>()
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 // randomize geprek
-const geprekIndex = Math.floor(Math.random() * geprek.length);
-const { path } = useRoute();
+const geprekIndex = Math.floor(Math.random() * geprek.length)
+const { path } = useRoute()
 </script>
 
 <template>

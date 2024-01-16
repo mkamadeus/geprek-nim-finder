@@ -6,17 +6,18 @@ const geprek = [
   'Ayam Geprek Senbu',
   'I Am Geprek Senbu',
   'Ayam Geprek Kepribon',
-  'Ayam Geprek Koplak',
-];
+  'Ayam Geprek Koplak'
+]
 
 // randomize geprek
-const geprekIndex = Math.floor(Math.random() * geprek.length);
-const { path } = useRoute();
+const geprekIndex = Math.floor(Math.random() * geprek.length)
+const { path } = useRoute()
 </script>
 
 <template>
-  <div container mx-auto p="6 lg:x-64" min-h-screen>
+  <div p="6 lg:x-64" mx-auto min-h-screen container>
     <!-- HEADER -->
+
     <template v-if="path === '/'">
       <NavigationHeader title="Geprek NIM Finder" :subtitle="`Digeprek oleh ${geprek[geprekIndex]}.`" />
     </template>

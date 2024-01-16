@@ -5,47 +5,53 @@ type Props = {
   modelValue: any;
 };
 
-const props = defineProps<Props>();
-const emits = defineEmits(['update:modelValue']);
+const props = defineProps<Props>()
+const emits = defineEmits(['update:modelValue'])
 
-const open = ref(false);
-const selectedIndex = computed(() => props.values.findIndex((val) => props.modelValue === val));
+const open = ref(false)
+const selectedIndex = computed(() => props.values.findIndex(val => props.modelValue === val))
 </script>
 
 <template>
-  <div relative tabindex="0" @blur="open = false" min-w="24">
+  <div relative tabindex="0" min-w="24" @blur="open = false">
     <div
       p="2 r-8"
-      w-full
+
       type="text"
+
+      relative
+      w-full
       cursor-pointer
       transition-all
-      relative
       bg="dark:gray-700 gray-300"
-      @click="open = !open"
       :class="open ? 'rounded-t' : 'rounded'"
+      @click="open = !open"
     >
       {{ props.options[selectedIndex] }}
     </div>
     <i-carbon-caret-up
+
+      pos="top-2.5"
+
       absolute
       right-2
-      pos="top-2.5"
-      transition
       transform
       cursor-pointer
-      @click="open = !open"
+      transition
       :class="open ? 'rotate-180' : 'rotate-0'"
+      @click="open = !open"
     />
     <!-- SELECTION MENU -->
     <div
       v-if="open"
       flex="~ col"
-      w-full
+
       bg="dark:gray-600 gray-200"
-      p-1
+
       absolute
       z-10
+      w-full
+      p-1
       :class="open ? 'rounded-b' : 'rounded'"
     >
       <div

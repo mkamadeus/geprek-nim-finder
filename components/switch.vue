@@ -3,28 +3,30 @@ type Props = {
   modelValue: boolean;
 };
 
-const props = defineProps<Props>();
-const emits = defineEmits(['update:modelValue']);
+const props = defineProps<Props>()
+const emits = defineEmits(['update:modelValue'])
 
 const toggle = () => {
-  emits('update:modelValue', !props.modelValue);
-};
+  emits('update:modelValue', !props.modelValue)
+}
 </script>
 
 <template>
   <div
+
+    h-6
+    w-12
+    cursor-pointer
     rounded-full
     p-1
-    w-12
-    h-6
-    cursor-pointer
     transition-all
     :class="modelValue ? 'bg-teal-500' : 'dark:bg-gray-700 bg-gray-300'"
     @click="toggle"
   >
     <div
-      w-4
+
       h-4
+      w-4
       rounded-full
       bg-gray-100
       shadow
