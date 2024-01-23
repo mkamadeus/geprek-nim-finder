@@ -1,10 +1,6 @@
 
 declare global {
-  enum MajorMode {
-    LONG,
-    SHORT,
-    BOTH,
-  }
+  type MajorMode = 'LONG' | 'SHORT' | 'BOTH';
 
   type Settings = {
     onlineMode: boolean;

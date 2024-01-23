@@ -13,18 +13,18 @@ onMounted(() => {
 
 // reset cache/localstorage
 // const { t } = useI18n();
-console.log(search.result)
+// console.log(search.result)
 </script>
 
 <template>
-  <div v-if="result.length !== 0" flex="~ col" justify-center>
+  <div v-if="result.length !== 0" flex="~ col" justify-center space-y-4>
     <TransitionGroup name="list" tag="ul">
       <template v-for="s in result" :key="s.majorID || s.tpbID">
         <HomeStudentItem :student="s" :is-special="SPECIALS.includes(s.majorID!)" />
       </template>
     </TransitionGroup>
     <div
-      v-if="true"
+      v-if="search.pagination.total !== search.pagination.showing"
       flex="~"
       mx-auto
       mt-2

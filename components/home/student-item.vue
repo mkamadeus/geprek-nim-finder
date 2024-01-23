@@ -30,9 +30,9 @@ const getMajorName = () => {
     parseInt(props.student.tpbID.slice(3, 5)) + // got from NIM
     (useSBMYear && ['190', '192', '197'].includes(prefix) ? 3 : 0) // add 3 years if student is under SBM
   const major = majors[prefix]
-  const shortened = codes[prefix]
+  // const shortened = codes[prefix]
 
-  let result: string
+  // let result: string
   // switch (mode) {
   //   case MajorMode.LONG:
   //     result = `${major}${showYear ? ` ${year}` : ''}`;
@@ -46,7 +46,7 @@ const getMajorName = () => {
   //   default:
   //     break;
   //   }
-  result = `${major}${showYear ? ` ${year}` : ''}`
+  const result = `${major}${showYear ? ` ${year}` : ''}`
 
   return result
 }
@@ -56,7 +56,17 @@ const clipboard = useClipboard()
 </script>
 
 <template>
-  <li flex items-center justify-between pb-4 space-x-2>
+  <li
+    bg="hover:gray-100/50 hover:dark:gray-700/50"
+
+    p="y-1 x-2"
+    flex
+    cursor-pointer
+    items-center
+    justify-between
+    rounded-lg
+    space-x-2
+  >
     <div>
       <div
         text="sm md:base dark:gray-200"
@@ -77,7 +87,7 @@ const clipboard = useClipboard()
           v-if="isSpecial"
           text="xs teal-500 dark:teal-300"
           @click="$router.push('/help')"
-        ><i-carbon-star-filled /></span>
+        ><div class="i-carbon-star-filled" /></span>
       </div>
       <div text="xs md:sm dark:gray-300" select-none font-300 italic>
         {{ getMajorName() }}

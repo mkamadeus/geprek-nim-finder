@@ -1,18 +1,4 @@
----
-title: Bantuan
-author:
-  alias: mkamadeus
-  nim: "13518035"
-inspirations:
-- alias: yonasadiel
-  nim: "13516030"
-- alias: ashura
-  nim: "13517099"
-- alias: jonesnapoleon
-  nim: "13518086"
----
-
-### Credits
+## Credits
 
 Sebelumnya, salam geprek 🍗 🔥!
 
@@ -32,7 +18,7 @@ inspirations:
 ::
 
 Geprek NIM Finder dibangun melalui bantuan dan masukan dari beberapa pihak, baik dalam implementasi maupun ide-ide fitur yang ada untuk NIM Finder ini.
-Terima kasih kepada nama-nama berikut:
+Terima kasih kepada orang-orang berikut:
 
 
 ::supporters
@@ -56,9 +42,7 @@ supporters:
 ---
 ::
 
----
-
-### Fitur Geprek
+## Fitur Geprek
 
 Situs ini dibuat dengan tujuan untuk mencari nama dan NIM bagi mahasiswa ITB.
 Tenang saja, situs ini tidak mengumbar data pribadi dari mahasiswa ITB kok :-)

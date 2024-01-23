@@ -17,24 +17,37 @@ const getQueryResult = useDebounceFn(async () => {
 </script>
 
 <template>
-  <form flex="~ col" mb-2 w-full space-y-2 @submit.prevent="">
-    <input
-      v-model="search.query"
-      border="2 gray-200 dark:gray-800/70 focus:teal-200/70"
+  <form flex="~" mb-2 w-full space="x-2" @submit.prevent="">
+    <fieldset
+      class="group"
+      border="2 gray-200 dark:gray-800/70 focus-within:teal-200/70"
       bg="white dark:gray-700/70"
-      p="2 x-4"
+      p="x-4"
       text="dark:white"
       transition="~ duration-150"
       role="textbox"
-      autofocus
+      h-10
       w-full
+      flex
+      items-center
       rounded-full
-      bg-transparent
       shadow
       outline-none
-      placeholder="Ketik nama, NIM, atau kode jurusan..."
-      @input="search.isTyping = true; getQueryResult()"
+      space-x-2
     >
+      <div class="i-carbon-search" />
+      <input
+        v-model="search.query"
+        autofocus
+        w-full
+        bg-transparent
+        focus:outline-none
+        text="sm md:base"
+        placeholder="Ketik nama, NIM, atau kode jurusan..."
+        @input="search.isTyping = true; getQueryResult()"
+      >
+    </fieldset>
+    <HomeSearchFilter />
     <!-- CHIPS -->
     <!-- <TransitionGroup name="list" tag="div" flex space-x-2> -->
     <!-- <button v-for="(chip, i) in store.chips" @click="

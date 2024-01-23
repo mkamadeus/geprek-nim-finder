@@ -14,11 +14,11 @@ defineProps<Props>()
         <h1 flex="~" font="800" text="2xl center teal-500 dark:teal-300" items-center space-x-3>
           {{ title }}
         </h1>
-        <p text="base md: gray-400 dark:white" italic>
+        <p text="sm md:base gray-400 dark:gray-400" italic>
           {{ subtitle }}
         </p>
       </div>
-      <NavigationBar />
+      <LazyNavigationBar />
     </div>
   </header>
 </template>

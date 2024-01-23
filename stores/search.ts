@@ -1,12 +1,3 @@
-// import { defineStore } from 'pinia';
-// import { Student } from '~/models/Student';
-// import { isNumber } from '~/utils/numberUtils';
-// import studentData from '~/json/data.json';
-
-// import c from '~/json/codes.json';
-// import { useSettings } from './settings';
-// const codes = c as { [key: string]: string };
-
 export const useSearch = defineStore('search', {
   state: () => {
     return {
@@ -22,11 +13,15 @@ export const useSearch = defineStore('search', {
     }
   },
   actions: {
-    async getResult () {
+    getResult () {
       return this.result
     },
-    async resetResult () {
+    resetResult () {
       this.result = []
+    },
+    getSettings () {
+      const settings = useSettings()
+      console.log(settings)
     },
     async search () {
       this.pagination.page = 1

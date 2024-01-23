@@ -20,11 +20,28 @@ const isNone = computed(
 <template>
   <!-- WHEN IDLE -->
   <div mb-3>
-    <div v-if="isIdle" text="center gray-400/70 xs" italic>
+    <div
+      v-if="isIdle"
+      text="center gray-400/70 xs"
+      flex="~ col"
+      items-center
+      justify-center
+      italic
+    >
+      <!-- <NuxtImg
+        src="/svg/chicken.svg"
+        alt="geprek-icon"
+        w="10"
+        h="10"
+        mb-5
+        filter="~ grayscale-100"
+        text-center
+        opacity-20
+      /> -->
       <div>Hasil pencarian akan keluar di sini. v3.0.0-rc.</div>
       <div>
         Data kurang lengkap?
-        <NuxtLink underline="~ dotted" cursor-pointer href="https://github.com/mkamadeus">
+        <NuxtLink underline="~ dotted" cursor-pointer to="https://github.com/mkamadeus">
           Hubungi pengembang.
         </NuxtLink>
       </div>

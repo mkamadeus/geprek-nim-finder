@@ -1,82 +1,94 @@
 <script setup lang="ts">
 const settings = useSettings()
+// const { yearLimit } = storeToRefs(settings)
 // const { t, locale } = useI18n();
+
+// const locale = useLocalStorage('geprek-locale', 'id')
+const yearLimit = useLocalStorage('geprek-year-limit', 2016)
+const majorMode = useLocalStorage('geprek-major-mode', 'LONG' as MajorMode)
+const showYear = useLocalStorage('geprek-show-year', true)
+const useSBMYear = useLocalStorage('geprek-use-sbm-year', true)
 </script>
 
 <template>
-  <div flex="~ col" space-y-4>
-    <!-- LANGUAGE SETTINGS -->
-    <div flex="~ col lg:row" space="y-2" justify="lg:between" items="lg:center">
-      <div>
-        <div text="sm lg:base" font-bold>
-          Pengaturan
+  <ClientOnly>
+    <section flex="~ col" space-y-4 text="black dark:gray-300">
+      <!-- LANGUAGE SETTINGS -->
+      <fieldset flex="~ col lg:row" space="y-2" justify="lg:between" items="lg:center">
+        <div>
+          <div text="sm lg:base" font-bold>
+            Bahasa
+          </div>
+          <div text="xs lg:sm">
+            Pilih bahasa yang ingin digunakan.
+          </div>
         </div>
-        <div text="xs lg:sm">
-          Gepreknya level berapa?
-        </div>
-      </div>
       <!-- <div>
-        <Dropdown :values="['id', 'en', 'cn']" :options="['🇮🇩 ID', '🇺🇸 EN', '🇨🇳 CN']" v-model="locale" />
+        <Dropdown v-model="locale" :values="['id', 'en', 'cn']" :options="['🇮🇩 ID', '🇺🇸 EN', '🇨🇳 CN']" />
       </div> -->
-    </div>
-    <!-- YEAR LIMIT SETTINGS -->
-    <div flex="~ col lg:row" space="y-2" justify="lg:between" items="lg:center">
-      <div>
-        <div text="sm lg:base" font-bold>
-          Batas angkatan
+      </fieldset>
+      <!-- YEAR LIMIT SETTINGS -->
+      <fieldset flex="~ col lg:row" space="y-2" justify="lg:between" items="lg:center">
+        <div>
+          <div text="sm lg:base" font-bold>
+            Batas angkatan
+          </div>
+          <div text="xs lg:sm">
+            Batasi tahun angkatan untuk mengurangi hasil pencarian.
+          </div>
         </div>
-        <div text="xs lg:sm">
-          Batasi tahun angkatan untuk mengurangi hasil pencarian.
+        <div>
+          <Dropdown v-model="yearLimit" :values="[2016, 2017, 2018, 2019]" :options="[2016, 2017, 2018, 2019]" />
         </div>
-      </div>
-      <div>
-        <Dropdown v-model="settings.yearLimit" :values="[2016, 2017, 2018, 2019]" :options="[2016, 2017, 2018, 2019]" />
-      </div>
-    </div>
-    <!-- MAJOR MODE SETTINGS -->
-    <div flex="~ col lg:row" space="y-2" justify="lg:between" items="lg:center">
-      <div>
-        <div text="sm lg:base" font-bold>
-          Tampilan jurusan/fakultas
+      </fieldset>
+      <!-- MAJOR MODE SETTINGS -->
+      <fieldset flex="~ col lg:row" space="y-2" justify="lg:between" items="lg:center">
+        <div>
+          <div text="sm lg:base" font-bold>
+            Tampilan jurusan/fakultas
+          </div>
+          <div text="xs lg:sm">
+            Tampilkan nama panjang, singkatan, atau keduanya untuk jurusan/fakultas.
+          </div>
         </div>
-        <div text="xs lg:sm">
-          Tampilkan nama panjang, singkatan, atau keduanya untuk jurusan/fakultas.
+        <div>
+          <Dropdown
+            v-model="majorMode"
+            :values="['LONG', 'SHORT', 'BOTH']"
+            :options="['Panjang', 'Singkatan', 'Keduanya']"
+          />
         </div>
-      </div>
-      <!-- <div>
-        <Dropdown :values="[MajorMode.LONG, MajorMode.SHORT, MajorMode.BOTH]"
-          :options="['Panjang', 'Singkatan', 'Keduanya']" v-model="settings.majorMode" />
-      </div> -->
-    </div>
-    <!-- SHOW YEAR SETTINGS -->
-    <div flex="~ row" space="y-2" justify="between" items="lg:center">
-      <div>
-        <div text="sm lg:base" font-bold>
-          {{ t('settings.yearDisplay.title') }}
+      </fieldset>
+      <!-- SHOW YEAR SETTINGS -->
+      <fieldset flex="~ row" space="y-2" justify="between" items="lg:center">
+        <div>
+          <div text="sm lg:base" font-bold>
+            Tahun jurusan/fakultas
+          </div>
+          <div text="xs lg:sm">
+            Tampilkan tahun untuk jurusan/fakultas.
+          </div>
         </div>
-        <div text="xs lg:sm">
-          {{ t('settings.yearDisplay.subtitle') }}
+        <div>
+          <Switch v-model="showYear" />
         </div>
-      </div>
-      <div>
-        <Switch v-model="settings.showYear" />
-      </div>
-    </div>
-    <!-- SBM SETTINGS -->
-    <div flex="~ row" space="y-2" justify="between" items="lg:center">
-      <div>
-        <div text="sm lg:base" font-bold>
-          {{ t('settings.sbmYear.title') }}
+      </fieldset>
+      <!-- SBM SETTINGS -->
+      <fieldset flex="~ row" space="y-2" justify="between" items="lg:center">
+        <div>
+          <div text="sm lg:base" font-bold>
+            Tahun Kelulusan SBM
+          </div>
+          <div text="xs lg:sm">
+            Gunakan tahun kelulusan SBM untuk untuk tampilan dan pencarian.
+          </div>
         </div>
-        <div text="xs lg:sm">
-          {{ t('settings.sbmYear.subtitle') }}
+        <div>
+          <Switch v-model="useSBMYear" />
         </div>
-      </div>
-      <div>
-        <Switch v-model="settings.useSBMYear" />
-      </div>
-    </div>
-  </div>
+      </fieldset>
+    </section>
+  </ClientOnly>
   <!-- <SearchBar />
         <StudentList /> -->
 </template>

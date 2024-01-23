@@ -8,9 +8,9 @@ const { data: student } = await useFetch('/api/search', {
 
 <template>
   <!-- MAIN -->
-  <main flex="~ col" justify-center class="not-prose">
+  <section flex="~ col" justify-center>
     <HomeSearchBar />
     <HomeSearchStatus />
     <HomeStudentList />
-  </main>
+  </section>
 </template>

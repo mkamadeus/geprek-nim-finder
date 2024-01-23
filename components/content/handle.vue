@@ -11,6 +11,7 @@ const router = useRouter()
 
 const redirectToNIM = (nim: string) => {
   store.query = nim
+  store.search()
   router.replace('/')
 }
 </script>

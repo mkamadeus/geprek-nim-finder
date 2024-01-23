@@ -1,5 +1,5 @@
 <template>
-  <div prose="~ dark:white black" text-lg>
+  <article prose="~ dark:white black">
     <ContentDoc />
-  </div>
+  </article>
 </template>

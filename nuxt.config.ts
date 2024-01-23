@@ -1,14 +1,14 @@
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/devtools',
-    // '@nuxtjs/i18n',
+    // '@nuxtjs/i18n',,
     '@nuxt/content',
     '@nuxt/image',
     '@pinia/nuxt',
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@vite-pwa/nuxt',
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    'radix-vue/nuxt'
   ],
   css: [
     '@unocss/reset/tailwind.css'
@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   app: {
     layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
-      title: 'geprek.mkamadeus.dev',
+      title: 'Geprek ITB NIM Finder',
       viewport: 'width=device-width,initial-scale=1',
       link: [{ rel: 'canonical', href: 'https://geprek.mkamadeus.dev/' }],
       meta: [
@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:description', content: 'mkamadeus\' personal website.' },
+        { property: 'og:description', content: 'Geprek ITB NIM Finder' },
         { property: 'og:title', content: 'mkamadeus.dev' },
         { property: 'og:url', content: 'https://geprek.mkamadeus.dev' },
         { property: 'og:locale', content: 'en_US' }
