@@ -1,12 +1,11 @@
 export default defineNuxtConfig({
   modules: [
-    // '@nuxtjs/i18n',,
     '@nuxt/content',
     '@nuxt/image',
     '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
     '@unocss/nuxt',
-    '@vite-pwa/nuxt',
     '@nuxtjs/eslint-module',
     'radix-vue/nuxt'
   ],

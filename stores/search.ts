@@ -19,10 +19,6 @@ export const useSearch = defineStore('search', {
     resetResult () {
       this.result = []
     },
-    getSettings () {
-      const settings = useSettings()
-      console.log(settings)
-    },
     async search () {
       this.pagination.page = 1
       this.isLoading = true
@@ -36,7 +32,6 @@ export const useSearch = defineStore('search', {
       this.isLoading = false
 
       if (!paginatedResult.data.value) {
-        console.error('no data returned')
         return []
       }
 
@@ -57,7 +52,6 @@ export const useSearch = defineStore('search', {
       this.isLoading = false
 
       if (!paginatedResult.data.value) {
-        console.error('no data returned')
         return []
       }
 

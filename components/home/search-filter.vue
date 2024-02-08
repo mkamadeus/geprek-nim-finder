@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const majors = ['Matematika',
+
+const faculties = {
+  
+}
+
+const majors = [
+  'Matematika',
   'Fisika',
   'Astronomi',
   'Mikrobiologi',

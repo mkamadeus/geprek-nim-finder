@@ -15,5 +15,10 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     }
+  },
+
+  "files.exclude": {
+    ".nuxt/": true,
+    "dist/": true,
   }
 }

@@ -4,10 +4,10 @@ const settings = useSettings()
 // const { t, locale } = useI18n();
 
 // const locale = useLocalStorage('geprek-locale', 'id')
-const yearLimit = useLocalStorage('geprek-year-limit', 2016)
-const majorMode = useLocalStorage('geprek-major-mode', 'LONG' as MajorMode)
-const showYear = useLocalStorage('geprek-show-year', true)
-const useSBMYear = useLocalStorage('geprek-use-sbm-year', true)
+// const yearLimit = useLocalStorage('geprek-year-limit', 2016)
+// const majorMode = useLocalStorage('geprek-major-mode', 'LONG' as MajorMode)
+// const showYear = useLocalStorage('geprek-show-year', true)
+// const useSBMYear = useLocalStorage('geprek-use-sbm-year', true)
 </script>
 
 <template>
@@ -38,7 +38,7 @@ const useSBMYear = useLocalStorage('geprek-use-sbm-year', true)
           </div>
         </div>
         <div>
-          <Dropdown v-model="yearLimit" :values="[2016, 2017, 2018, 2019]" :options="[2016, 2017, 2018, 2019]" />
+          <Dropdown v-model="settings.yearLimit" :values="[2016, 2017, 2018, 2019]" :options="[2016, 2017, 2018, 2019]" />
         </div>
       </fieldset>
       <!-- MAJOR MODE SETTINGS -->
@@ -53,7 +53,7 @@ const useSBMYear = useLocalStorage('geprek-use-sbm-year', true)
         </div>
         <div>
           <Dropdown
-            v-model="majorMode"
+            v-model="settings.majorMode"
             :values="['LONG', 'SHORT', 'BOTH']"
             :options="['Panjang', 'Singkatan', 'Keduanya']"
           />
@@ -70,7 +70,7 @@ const useSBMYear = useLocalStorage('geprek-use-sbm-year', true)
           </div>
         </div>
         <div>
-          <Switch v-model="showYear" />
+          <Switch v-model="settings.showYear" />
         </div>
       </fieldset>
       <!-- SBM SETTINGS -->
@@ -84,7 +84,7 @@ const useSBMYear = useLocalStorage('geprek-use-sbm-year', true)
           </div>
         </div>
         <div>
-          <Switch v-model="useSBMYear" />
+          <Switch v-model="settings.useSBMYear" />
         </div>
       </fieldset>
     </section>

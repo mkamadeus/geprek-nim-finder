@@ -19,7 +19,7 @@ if (!codesResponse) {
   throw new Error('Failed to load codes')
 }
 const majors = majorsResponse.data.value!
-const codes = majorsResponse.data.value!
+// const codes = majorsResponse.data.value!
 
 const { showYear, useSBMYear } = useSettings()
 
